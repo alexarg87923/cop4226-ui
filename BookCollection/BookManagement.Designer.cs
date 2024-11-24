@@ -79,10 +79,24 @@
             label16 = new Label();
             label17 = new Label();
             tabPage4 = new TabPage();
-            label19 = new Label();
-            label20 = new Label();
-            groupBox5 = new GroupBox();
             groupBox6 = new GroupBox();
+            dataGridView2 = new DataGridView();
+            button10 = new Button();
+            button9 = new Button();
+            groupBox5 = new GroupBox();
+            dataGridView1 = new DataGridView();
+            button8 = new Button();
+            button7 = new Button();
+            label20 = new Label();
+            label19 = new Label();
+            STitle = new DataGridViewTextBoxColumn();
+            SAuthor = new DataGridViewTextBoxColumn();
+            SISBN = new DataGridViewTextBoxColumn();
+            SOwner = new DataGridViewTextBoxColumn();
+            FTitle = new DataGridViewTextBoxColumn();
+            FAuthor = new DataGridViewTextBoxColumn();
+            FISBN = new DataGridViewTextBoxColumn();
+            FOwner = new DataGridViewTextBoxColumn();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -93,6 +107,10 @@
             tabPage3.SuspendLayout();
             groupBox4.SuspendLayout();
             tabPage4.SuspendLayout();
+            groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -576,13 +594,85 @@
             tabPage4.Text = "Collections Management";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label19
+            // groupBox6
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(0, 0);
-            label19.Name = "label19";
-            label19.Size = new Size(0, 32);
-            label19.TabIndex = 0;
+            groupBox6.Controls.Add(dataGridView2);
+            groupBox6.Controls.Add(button10);
+            groupBox6.Controls.Add(button9);
+            groupBox6.Location = new Point(8, 514);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(800, 331);
+            groupBox6.TabIndex = 10;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Science Collection";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { STitle, SAuthor, SISBN, SOwner });
+            dataGridView2.Location = new Point(0, 115);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 82;
+            dataGridView2.Size = new Size(800, 216);
+            dataGridView2.TabIndex = 3;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(598, 48);
+            button10.Name = "button10";
+            button10.Size = new Size(150, 46);
+            button10.TabIndex = 3;
+            button10.Text = "Delete Book";
+            button10.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(403, 48);
+            button9.Name = "button9";
+            button9.Size = new Size(150, 46);
+            button9.TabIndex = 3;
+            button9.Text = "Add Book";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(dataGridView1);
+            groupBox5.Controls.Add(button8);
+            groupBox5.Controls.Add(button7);
+            groupBox5.Location = new Point(8, 104);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(800, 375);
+            groupBox5.TabIndex = 9;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Fiction Collection";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FTitle, FAuthor, FISBN, FOwner });
+            dataGridView1.Location = new Point(0, 107);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 82;
+            dataGridView1.Size = new Size(800, 268);
+            dataGridView1.TabIndex = 2;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(598, 38);
+            button8.Name = "button8";
+            button8.Size = new Size(150, 46);
+            button8.TabIndex = 1;
+            button8.Text = "Delete Book";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(403, 38);
+            button7.Name = "button7";
+            button7.Size = new Size(150, 46);
+            button7.TabIndex = 0;
+            button7.Text = "Add Book";
+            button7.UseVisualStyleBackColor = true;
             // 
             // label20
             // 
@@ -594,23 +684,77 @@
             label20.TabIndex = 8;
             label20.Text = "Collection Overview";
             // 
-            // groupBox5
+            // label19
             // 
-            groupBox5.Location = new Point(8, 104);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(800, 197);
-            groupBox5.TabIndex = 9;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "Fiction Collection";
+            label19.AutoSize = true;
+            label19.Location = new Point(0, 0);
+            label19.Name = "label19";
+            label19.Size = new Size(0, 32);
+            label19.TabIndex = 0;
             // 
-            // groupBox6
+            // STitle
             // 
-            groupBox6.Location = new Point(8, 345);
-            groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(800, 268);
-            groupBox6.TabIndex = 10;
-            groupBox6.TabStop = false;
-            groupBox6.Text = "Science Collection";
+            STitle.HeaderText = "Title";
+            STitle.MinimumWidth = 10;
+            STitle.Name = "STitle";
+            STitle.ReadOnly = true;
+            STitle.Width = 200;
+            // 
+            // SAuthor
+            // 
+            SAuthor.HeaderText = "Author";
+            SAuthor.MinimumWidth = 10;
+            SAuthor.Name = "SAuthor";
+            SAuthor.ReadOnly = true;
+            SAuthor.Width = 200;
+            // 
+            // SISBN
+            // 
+            SISBN.HeaderText = "ISBN";
+            SISBN.MinimumWidth = 10;
+            SISBN.Name = "SISBN";
+            SISBN.ReadOnly = true;
+            SISBN.Width = 200;
+            // 
+            // SOwner
+            // 
+            SOwner.HeaderText = "Owner";
+            SOwner.MinimumWidth = 10;
+            SOwner.Name = "SOwner";
+            SOwner.ReadOnly = true;
+            SOwner.Width = 200;
+            // 
+            // FTitle
+            // 
+            FTitle.HeaderText = "Title";
+            FTitle.MinimumWidth = 10;
+            FTitle.Name = "FTitle";
+            FTitle.ReadOnly = true;
+            FTitle.Width = 200;
+            // 
+            // FAuthor
+            // 
+            FAuthor.HeaderText = "Author";
+            FAuthor.MinimumWidth = 10;
+            FAuthor.Name = "FAuthor";
+            FAuthor.ReadOnly = true;
+            FAuthor.Width = 200;
+            // 
+            // FISBN
+            // 
+            FISBN.HeaderText = "ISBN";
+            FISBN.MinimumWidth = 10;
+            FISBN.Name = "FISBN";
+            FISBN.ReadOnly = true;
+            FISBN.Width = 200;
+            // 
+            // FOwner
+            // 
+            FOwner.HeaderText = "Owner";
+            FOwner.MinimumWidth = 10;
+            FOwner.Name = "FOwner";
+            FOwner.ReadOnly = true;
+            FOwner.Width = 200;
             // 
             // BookManagement
             // 
@@ -641,6 +785,10 @@
             groupBox4.PerformLayout();
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -702,5 +850,19 @@
         private GroupBox groupBox5;
         private Label label20;
         private Label label19;
+        private Button button8;
+        private Button button7;
+        private DataGridView dataGridView1;
+        private Button button10;
+        private Button button9;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn STitle;
+        private DataGridViewTextBoxColumn SAuthor;
+        private DataGridViewTextBoxColumn SISBN;
+        private DataGridViewTextBoxColumn SOwner;
+        private DataGridViewTextBoxColumn FTitle;
+        private DataGridViewTextBoxColumn FAuthor;
+        private DataGridViewTextBoxColumn FISBN;
+        private DataGridViewTextBoxColumn FOwner;
     }
 }
