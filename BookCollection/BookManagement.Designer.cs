@@ -41,6 +41,9 @@
             button2 = new Button();
             button1 = new Button();
             groupBox2 = new GroupBox();
+            textBox6 = new TextBox();
+            textBox5 = new TextBox();
+            textBox4 = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -50,17 +53,31 @@
             label4 = new Label();
             label3 = new Label();
             tabPage2 = new TabPage();
-            tabPage3 = new TabPage();
-            groupBox3 = new GroupBox();
-            label9 = new Label();
-            label10 = new Label();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            label11 = new Label();
-            label12 = new Label();
-            label13 = new Label();
             textBox7 = new TextBox();
+            label13 = new Label();
+            label9 = new Label();
+            groupBox3 = new GroupBox();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            tabPage3 = new TabPage();
+            button3 = new Button();
+            button4 = new Button();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            label17 = new Label();
+            button5 = new Button();
+            button6 = new Button();
+            textBox8 = new TextBox();
+            label18 = new Label();
+            groupBox4 = new GroupBox();
+            textBox9 = new TextBox();
+            textBox10 = new TextBox();
+            textBox11 = new TextBox();
+            textBox12 = new TextBox();
+            textBox13 = new TextBox();
+            textBox14 = new TextBox();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -68,6 +85,8 @@
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox3.SuspendLayout();
+            tabPage3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -195,6 +214,27 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Book Properties";
             // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(208, 220);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(200, 39);
+            textBox6.TabIndex = 5;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(208, 146);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(200, 39);
+            textBox5.TabIndex = 4;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(208, 72);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(200, 39);
+            textBox4.TabIndex = 3;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -269,6 +309,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(button4);
+            tabPage2.Controls.Add(button3);
             tabPage2.Controls.Add(textBox7);
             tabPage2.Controls.Add(label13);
             tabPage2.Controls.Add(label9);
@@ -281,27 +323,22 @@
             tabPage2.Text = "Authors";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // textBox7
             // 
-            tabPage3.Location = new Point(8, 46);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(842, 1041);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Collections";
-            tabPage3.UseVisualStyleBackColor = true;
+            textBox7.Location = new Point(8, 464);
+            textBox7.Multiline = true;
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(765, 230);
+            textBox7.TabIndex = 3;
             // 
-            // groupBox3
+            // label13
             // 
-            groupBox3.Controls.Add(label12);
-            groupBox3.Controls.Add(label11);
-            groupBox3.Controls.Add(label10);
-            groupBox3.Location = new Point(8, 77);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(765, 326);
-            groupBox3.TabIndex = 0;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Author Details";
+            label13.AutoSize = true;
+            label13.Location = new Point(8, 412);
+            label13.Name = "label13";
+            label13.Size = new Size(174, 32);
+            label13.TabIndex = 2;
+            label13.Text = "Author's Books";
             // 
             // label9
             // 
@@ -313,70 +350,210 @@
             label9.TabIndex = 1;
             label9.Text = "Author Management";
             // 
-            // label10
+            // groupBox3
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(54, 88);
-            label10.Name = "label10";
-            label10.Size = new Size(122, 32);
-            label10.TabIndex = 0;
-            label10.Text = "Author ID:";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(208, 72);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(200, 39);
-            textBox4.TabIndex = 3;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(208, 146);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(200, 39);
-            textBox5.TabIndex = 4;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(208, 220);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(200, 39);
-            textBox6.TabIndex = 5;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(97, 170);
-            label11.Name = "label11";
-            label11.Size = new Size(83, 32);
-            label11.TabIndex = 1;
-            label11.Text = "Name:";
+            groupBox3.Controls.Add(textBox11);
+            groupBox3.Controls.Add(textBox10);
+            groupBox3.Controls.Add(textBox9);
+            groupBox3.Controls.Add(label12);
+            groupBox3.Controls.Add(label11);
+            groupBox3.Controls.Add(label10);
+            groupBox3.Location = new Point(8, 77);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(765, 300);
+            groupBox3.TabIndex = 0;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Author Details";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(54, 246);
+            label12.Location = new Point(28, 227);
             label12.Name = "label12";
             label12.Size = new Size(126, 32);
             label12.TabIndex = 2;
             label12.Text = "Birth Date:";
             // 
-            // label13
+            // label11
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(8, 452);
-            label13.Name = "label13";
-            label13.Size = new Size(174, 32);
-            label13.TabIndex = 2;
-            label13.Text = "Author's Books";
+            label11.AutoSize = true;
+            label11.Location = new Point(71, 151);
+            label11.Name = "label11";
+            label11.Size = new Size(83, 32);
+            label11.TabIndex = 1;
+            label11.Text = "Name:";
             // 
-            // textBox7
+            // label10
             // 
-            textBox7.Location = new Point(8, 504);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(765, 230);
-            textBox7.TabIndex = 3;
+            label10.AutoSize = true;
+            label10.Location = new Point(32, 69);
+            label10.Name = "label10";
+            label10.Size = new Size(122, 32);
+            label10.TabIndex = 0;
+            label10.Text = "Author ID:";
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(label14);
+            tabPage3.Controls.Add(button5);
+            tabPage3.Controls.Add(button6);
+            tabPage3.Controls.Add(textBox8);
+            tabPage3.Controls.Add(label18);
+            tabPage3.Controls.Add(groupBox4);
+            tabPage3.Location = new Point(8, 46);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(842, 1041);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Collections";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(8, 763);
+            button3.Name = "button3";
+            button3.Size = new Size(206, 46);
+            button3.TabIndex = 4;
+            button3.Text = "Save Author";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(251, 763);
+            button4.Name = "button4";
+            button4.Size = new Size(206, 46);
+            button4.TabIndex = 5;
+            button4.Text = "Delete Author";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 12F);
+            label14.Location = new Point(8, 15);
+            label14.Name = "label14";
+            label14.Size = new Size(361, 45);
+            label14.TabIndex = 7;
+            label14.Text = "Collection Management";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(101, 230);
+            label15.Name = "label15";
+            label15.Size = new Size(89, 32);
+            label15.TabIndex = 2;
+            label15.Text = "Owner:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(107, 151);
+            label16.Name = "label16";
+            label16.Size = new Size(83, 32);
+            label16.TabIndex = 1;
+            label16.Text = "Name:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(34, 69);
+            label17.Name = "label17";
+            label17.Size = new Size(156, 32);
+            label17.TabIndex = 0;
+            label17.Text = "Collection ID:";
+            // 
+            // button5
+            // 
+            button5.Location = new Point(251, 763);
+            button5.Name = "button5";
+            button5.Size = new Size(206, 46);
+            button5.TabIndex = 11;
+            button5.Text = "Delete Collection";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(8, 763);
+            button6.Name = "button6";
+            button6.Size = new Size(206, 46);
+            button6.TabIndex = 10;
+            button6.Text = "Save Collection";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(8, 464);
+            textBox8.Multiline = true;
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(765, 230);
+            textBox8.TabIndex = 9;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(8, 412);
+            label18.Name = "label18";
+            label18.Size = new Size(219, 32);
+            label18.TabIndex = 8;
+            label18.Text = "Books in Collection";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(textBox12);
+            groupBox4.Controls.Add(textBox13);
+            groupBox4.Controls.Add(textBox14);
+            groupBox4.Controls.Add(label15);
+            groupBox4.Controls.Add(label16);
+            groupBox4.Controls.Add(label17);
+            groupBox4.Location = new Point(8, 77);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(765, 300);
+            groupBox4.TabIndex = 6;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Collection Details";
+            // 
+            // textBox9
+            // 
+            textBox9.Location = new Point(225, 69);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(264, 39);
+            textBox9.TabIndex = 3;
+            // 
+            // textBox10
+            // 
+            textBox10.Location = new Point(225, 151);
+            textBox10.Name = "textBox10";
+            textBox10.Size = new Size(264, 39);
+            textBox10.TabIndex = 4;
+            // 
+            // textBox11
+            // 
+            textBox11.Location = new Point(225, 227);
+            textBox11.Name = "textBox11";
+            textBox11.Size = new Size(264, 39);
+            textBox11.TabIndex = 5;
+            // 
+            // textBox12
+            // 
+            textBox12.Location = new Point(243, 230);
+            textBox12.Name = "textBox12";
+            textBox12.Size = new Size(264, 39);
+            textBox12.TabIndex = 8;
+            // 
+            // textBox13
+            // 
+            textBox13.Location = new Point(243, 151);
+            textBox13.Name = "textBox13";
+            textBox13.Size = new Size(264, 39);
+            textBox13.TabIndex = 7;
+            // 
+            // textBox14
+            // 
+            textBox14.Location = new Point(243, 69);
+            textBox14.Name = "textBox14";
+            textBox14.Size = new Size(264, 39);
+            textBox14.TabIndex = 6;
             // 
             // BookManagement
             // 
@@ -401,6 +578,10 @@
             tabPage2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -440,5 +621,22 @@
         private Label label12;
         private Label label11;
         private TextBox textBox7;
+        private Button button4;
+        private Button button3;
+        private TextBox textBox11;
+        private TextBox textBox10;
+        private TextBox textBox9;
+        private Label label14;
+        private Button button5;
+        private Button button6;
+        private TextBox textBox8;
+        private Label label18;
+        private GroupBox groupBox4;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private TextBox textBox12;
+        private TextBox textBox13;
+        private TextBox textBox14;
     }
 }
