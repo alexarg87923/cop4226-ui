@@ -1,8 +1,8 @@
 namespace BookCollection
 {
-    public partial class Form1 : Form
+    public partial class BookManagement : Form
     {
-        public Form1()
+        public BookManagement()
         {
             InitializeComponent();
         }
