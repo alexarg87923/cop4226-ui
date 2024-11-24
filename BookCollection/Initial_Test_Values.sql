@@ -1,4 +1,4 @@
--- Insert more authors and capture their IDs
+
 DECLARE @AuthorID_GeorgeOrwell INT;
 INSERT INTO Authors (name, birth_date, biography)
 VALUES ('George Orwell', '1903-06-25', 'English novelist, essayist, journalist, and critic.');
