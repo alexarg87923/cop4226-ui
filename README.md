@@ -1,8 +1,10 @@
-Project Contributors:
+##**Project Contributors:**
 
 Dominick Diaz
 
 Alex Arguelles
+
+
 
 # **Quick Usage Guide**
 
