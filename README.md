@@ -1,8 +1,19 @@
+**Project Contributors:**
+
+Dominick Diaz
+
+Alex Arguelles
+
+
+
+
+
+
 
 
 # **Quick Usage Guide**
 
-This provides a brief overview of how to use the provided C# classes to interact with your SQL Server database for managing books, authors, and collections. -Dominick
+This provides a brief overview of how to use the provided C# classes to interact with your SQL Server database for managing books, authors, and collections. 
 
 ## **Prerequisites**
 
@@ -127,4 +138,3 @@ collectionBook.Add();
 Console.WriteLine("Book added to collection.");
 ```
 
-- Dominick
