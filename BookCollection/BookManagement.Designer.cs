@@ -35,6 +35,10 @@
             resetDatabaseToolStripMenuItem = new ToolStripMenuItem();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            button13 = new Button();
+            button11 = new Button();
+            button12 = new Button();
+            Authors = new ListBox();
             label8 = new Label();
             button2 = new Button();
             button1 = new Button();
@@ -51,6 +55,9 @@
             label4 = new Label();
             label3 = new Label();
             tabPage2 = new TabPage();
+            button16 = new Button();
+            button15 = new Button();
+            button14 = new Button();
             button4 = new Button();
             button3 = new Button();
             textBox7 = new TextBox();
@@ -64,6 +71,9 @@
             label11 = new Label();
             label10 = new Label();
             tabPage3 = new TabPage();
+            button19 = new Button();
+            button18 = new Button();
+            button17 = new Button();
             label14 = new Label();
             button5 = new Button();
             button6 = new Button();
@@ -95,16 +105,6 @@
             button7 = new Button();
             label20 = new Label();
             label19 = new Label();
-            Authors = new ListBox();
-            button12 = new Button();
-            button11 = new Button();
-            button13 = new Button();
-            button14 = new Button();
-            button15 = new Button();
-            button16 = new Button();
-            button17 = new Button();
-            button18 = new Button();
-            button19 = new Button();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -200,6 +200,46 @@
             tabPage1.Text = "Books";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button13
+            // 
+            button13.Location = new Point(28, 934);
+            button13.Margin = new Padding(4, 2, 4, 2);
+            button13.Name = "button13";
+            button13.Size = new Size(173, 47);
+            button13.TabIndex = 10;
+            button13.Text = "New Book";
+            button13.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(339, 18);
+            button11.Margin = new Padding(4, 2, 4, 2);
+            button11.Name = "button11";
+            button11.Size = new Size(173, 47);
+            button11.TabIndex = 9;
+            button11.Text = "Prev";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += BookPrev;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(544, 18);
+            button12.Margin = new Padding(4, 2, 4, 2);
+            button12.Name = "button12";
+            button12.Size = new Size(173, 47);
+            button12.TabIndex = 8;
+            button12.Text = "Next";
+            button12.UseVisualStyleBackColor = true;
+            button12.Click += BookNext;
+            // 
+            // Authors
+            // 
+            Authors.FormattingEnabled = true;
+            Authors.Location = new Point(28, 696);
+            Authors.Name = "Authors";
+            Authors.Size = new Size(689, 196);
+            Authors.TabIndex = 6;
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -277,9 +317,9 @@
             label7.Location = new Point(26, 220);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(123, 32);
+            label7.Size = new Size(194, 32);
             label7.TabIndex = 2;
-            label7.Text = "Language:";
+            label7.Text = "Publication Date:";
             // 
             // label6
             // 
@@ -371,6 +411,36 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Authors";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            button16.Location = new Point(587, 26);
+            button16.Margin = new Padding(4, 2, 4, 2);
+            button16.Name = "button16";
+            button16.Size = new Size(206, 47);
+            button16.TabIndex = 8;
+            button16.Text = "Next";
+            button16.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            button15.Location = new Point(359, 26);
+            button15.Margin = new Padding(4, 2, 4, 2);
+            button15.Name = "button15";
+            button15.Size = new Size(206, 47);
+            button15.TabIndex = 7;
+            button15.Text = "Prev";
+            button15.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            button14.Location = new Point(5, 764);
+            button14.Margin = new Padding(4, 2, 4, 2);
+            button14.Name = "button14";
+            button14.Size = new Size(206, 47);
+            button14.TabIndex = 6;
+            button14.Text = "New Author";
+            button14.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -512,6 +582,36 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Collections";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            button19.Location = new Point(579, 26);
+            button19.Margin = new Padding(4, 2, 4, 2);
+            button19.Name = "button19";
+            button19.Size = new Size(206, 47);
+            button19.TabIndex = 14;
+            button19.Text = "Next";
+            button19.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            button18.Location = new Point(365, 26);
+            button18.Margin = new Padding(4, 2, 4, 2);
+            button18.Name = "button18";
+            button18.Size = new Size(206, 47);
+            button18.TabIndex = 13;
+            button18.Text = "Prev";
+            button18.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            button17.Location = new Point(8, 764);
+            button17.Margin = new Padding(4, 2, 4, 2);
+            button17.Name = "button17";
+            button17.Size = new Size(206, 47);
+            button17.TabIndex = 12;
+            button17.Text = "New Collection";
+            button17.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -822,104 +922,6 @@
             label19.Name = "label19";
             label19.Size = new Size(0, 32);
             label19.TabIndex = 0;
-            // 
-            // Authors
-            // 
-            Authors.FormattingEnabled = true;
-            Authors.Location = new Point(28, 696);
-            Authors.Name = "Authors";
-            Authors.Size = new Size(689, 196);
-            Authors.TabIndex = 6;
-            // 
-            // button12
-            // 
-            button12.Location = new Point(544, 18);
-            button12.Margin = new Padding(4, 2, 4, 2);
-            button12.Name = "button12";
-            button12.Size = new Size(173, 47);
-            button12.TabIndex = 8;
-            button12.Text = "Next";
-            button12.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            button11.Location = new Point(339, 18);
-            button11.Margin = new Padding(4, 2, 4, 2);
-            button11.Name = "button11";
-            button11.Size = new Size(173, 47);
-            button11.TabIndex = 9;
-            button11.Text = "Prev";
-            button11.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            button13.Location = new Point(28, 934);
-            button13.Margin = new Padding(4, 2, 4, 2);
-            button13.Name = "button13";
-            button13.Size = new Size(173, 47);
-            button13.TabIndex = 10;
-            button13.Text = "New Book";
-            button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            button14.Location = new Point(5, 764);
-            button14.Margin = new Padding(4, 2, 4, 2);
-            button14.Name = "button14";
-            button14.Size = new Size(206, 47);
-            button14.TabIndex = 6;
-            button14.Text = "New Author";
-            button14.UseVisualStyleBackColor = true;
-            // 
-            // button15
-            // 
-            button15.Location = new Point(359, 26);
-            button15.Margin = new Padding(4, 2, 4, 2);
-            button15.Name = "button15";
-            button15.Size = new Size(206, 47);
-            button15.TabIndex = 7;
-            button15.Text = "Prev";
-            button15.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            button16.Location = new Point(587, 26);
-            button16.Margin = new Padding(4, 2, 4, 2);
-            button16.Name = "button16";
-            button16.Size = new Size(206, 47);
-            button16.TabIndex = 8;
-            button16.Text = "Next";
-            button16.UseVisualStyleBackColor = true;
-            // 
-            // button17
-            // 
-            button17.Location = new Point(8, 764);
-            button17.Margin = new Padding(4, 2, 4, 2);
-            button17.Name = "button17";
-            button17.Size = new Size(206, 47);
-            button17.TabIndex = 12;
-            button17.Text = "New Collection";
-            button17.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            button18.Location = new Point(365, 26);
-            button18.Margin = new Padding(4, 2, 4, 2);
-            button18.Name = "button18";
-            button18.Size = new Size(206, 47);
-            button18.TabIndex = 13;
-            button18.Text = "Prev";
-            button18.UseVisualStyleBackColor = true;
-            // 
-            // button19
-            // 
-            button19.Location = new Point(579, 26);
-            button19.Margin = new Padding(4, 2, 4, 2);
-            button19.Name = "button19";
-            button19.Size = new Size(206, 47);
-            button19.TabIndex = 14;
-            button19.Text = "Next";
-            button19.UseVisualStyleBackColor = true;
             // 
             // BookManagement
             // 

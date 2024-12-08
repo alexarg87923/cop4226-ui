@@ -34,9 +34,9 @@ namespace BookCollection
             button6.Click += SaveCollection_Click;
             button5.Click += DeleteCollection_Click;
 
-            InitializeDatabase();
-            InitializeData();
-            LoadBookComponents();
+            //InitializeDatabase();
+            //InitializeData();
+            //LoadBookComponents();
         }
 
         private void LoadBookComponents()
@@ -724,6 +724,32 @@ namespace BookCollection
             {
                 MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
             }
+        }
+
+        private void BookPrev(object sender, EventArgs e)
+        {
+            if (current_book_index == 0)
+            {
+                current_book_index = books.Count - 1;
+            }
+            else
+            {
+                current_book_index--;
+            }
+            LoadBookComponents();
+        }
+
+        private void BookNext(object sender, EventArgs e)
+        {
+            if(current_book_index == books.Count-1)
+            {
+                current_book_index = 0;
+            }
+            else
+            {
+                current_book_index++;
+            }
+            LoadBookComponents();
         }
     }
 }
