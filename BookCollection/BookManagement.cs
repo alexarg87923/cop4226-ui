@@ -97,42 +97,40 @@ namespace BookCollection
                     }
                 }
             }
-            else
+
+            if (!DataExistsInDatabase())
             {
-                if (!DataExistsInDatabase())
+                var result = MessageBox.Show("I see your databases don't have test data initalized, do you want me to fill in the databases for you?", "Database Initalizer", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
                 {
-                    var result = MessageBox.Show("I see your databases don't have test data initalized, do you want me to fill in the databases for you?", "Database Initalizer", MessageBoxButtons.YesNo);
-
-                    if (result == DialogResult.Yes)
+                    try
                     {
-                        try
+                        string sqlFilePath = Path.Combine(Application.StartupPath, "Initial_Test_Values.sql");
+
+                        if (!File.Exists(sqlFilePath))
                         {
-                            string sqlFilePath = Path.Combine(Application.StartupPath, "Initial_Test_Values.sql");
-
-                            if (!File.Exists(sqlFilePath))
-                            {
-                                MessageBox.Show($"SQL script file not found at {sqlFilePath}");
-                                return;
-                            }
-
-                            string script = File.ReadAllText(sqlFilePath);
-
-                            using (SqlConnection connection = new SqlConnection(masterConnectionString))
-                            {
-                                connection.Open();
-
-                                using (SqlCommand sqlCommand = new SqlCommand(script, connection))
-                                {
-                                    sqlCommand.ExecuteNonQuery();
-                                }
-                            }
-
-                            MessageBox.Show("Database and tables created successfully.");
+                            MessageBox.Show($"SQL script file not found at {sqlFilePath}");
+                            return;
                         }
-                        catch (Exception ex)
+
+                        string script = File.ReadAllText(sqlFilePath);
+
+                        using (SqlConnection connection = new SqlConnection(databaseConnectionStringc))
                         {
-                            MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
+                            connection.Open();
+
+                            using (SqlCommand sqlCommand = new SqlCommand(script, connection))
+                            {
+                                sqlCommand.ExecuteNonQuery();
+                            }
                         }
+
+                        MessageBox.Show("Database and tables created successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
                     }
                 }
             }
