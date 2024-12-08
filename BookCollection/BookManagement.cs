@@ -135,6 +135,37 @@ namespace BookCollection
             }
         }
 
+        void reset_data()
+        {
+            try
+            {
+                string sqlFilePath = Path.Combine(Application.StartupPath, "Initial_Test_Values.sql");
+
+                if (!File.Exists(sqlFilePath))
+                {
+                    MessageBox.Show($"SQL script file not found at {sqlFilePath}");
+                    return;
+                }
+
+                string script = File.ReadAllText(sqlFilePath);
+
+                using (SqlConnection connection = new SqlConnection(databaseConnectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand sqlCommand = new SqlCommand(script, connection))
+                    {
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Database and tables created successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
+            }
+        }
 
         private void InitializeDatabase()
         {
@@ -146,34 +177,7 @@ namespace BookCollection
 
                 if (result == DialogResult.Yes)
                 {
-                    try
-                    {
-                        string sqlFilePath = Path.Combine(Application.StartupPath, "Initial_Test_Values.sql");
-
-                        if (!File.Exists(sqlFilePath))
-                        {
-                            MessageBox.Show($"SQL script file not found at {sqlFilePath}");
-                            return;
-                        }
-
-                        string script = File.ReadAllText(sqlFilePath);
-
-                        using (SqlConnection connection = new SqlConnection(databaseConnectionString))
-                        {
-                            connection.Open();
-
-                            using (SqlCommand sqlCommand = new SqlCommand(script, connection))
-                            {
-                                sqlCommand.ExecuteNonQuery();
-                            }
-                        }
-
-                        MessageBox.Show("Database and tables created successfully.");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
-                    }
+                    reset_data();
                 }
             }
         }
@@ -720,7 +724,7 @@ namespace BookCollection
                     }
                 }
 
-                EnsureDatabaseAttached();
+                reset_data();
 
                 MessageBox.Show("Database reset successfully!");
             }
