@@ -707,31 +707,26 @@ namespace BookCollection
         {
             try
             {
-                string sqlFilePath = Path.Combine(Application.StartupPath, "ResetDB.sql");
+                string query = "DROP DATABASE BookCollectionDB";
 
-                if (!File.Exists(sqlFilePath))
-                {
-                    MessageBox.Show($"SQL script file not found at {sqlFilePath}");
-                    return;
-                }
-
-                string script = File.ReadAllText(sqlFilePath);
 
                 using (SqlConnection connection = new SqlConnection(masterConnectionString))
                 {
                     connection.Open();
 
-                    using (SqlCommand sqlCommand = new SqlCommand(script, connection))
+                    using (SqlCommand sqlCommand = new SqlCommand(query, connection))
                     {
                         sqlCommand.ExecuteNonQuery();
                     }
                 }
 
+                EnsureDatabaseAttached();
+
                 MessageBox.Show("Database reset successfully!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
+                MessageBox.Show($"An error occurred while resetting the database: {ex.Message}");
             }
         }
 
