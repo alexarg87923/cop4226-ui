@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using BookCollection.Items;
 using BookCollectionDB;
 using Microsoft.Data.SqlClient;
@@ -6,6 +7,11 @@ namespace BookCollection
 {
     public partial class BookManagement : Form
     {
+        private static string masterConnectionString = "Server=(localDB)\\MSSQLLocalDB;Database=master;Trusted_Connection=True;";
+        private static string databaseName = "BookCollectionDB";
+        private static string booksTableName = "Books";
+        private static string databaseConnectionString = $"Server=(localDB)\\MSSQLLocalDB;Database={databaseName};Trusted_Connection=True;";
+
         public BookManagement()
         {
             InitializeComponent();
@@ -19,7 +25,145 @@ namespace BookCollection
 
             
             button6.Click += SaveCollection_Click;    
-            button5.Click += DeleteCollection_Click;  
+            button5.Click += DeleteCollection_Click;
+
+            InitializeDatabase();
+        }
+
+
+        private static void InitializeDatabase()
+        {
+            databaseConnectionString = $"Server=YOUR_SERVER_NAME;Database={databaseName};Trusted_Connection=True;";
+
+            if (!DatabaseExists())
+            {
+                var result = MessageBox.Show("I see you don't have the databases initalized, do you want me to initialize them for you?", "Database Initalizer", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string sqlFilePath = Path.Combine(Application.StartupPath, "Book_Collection_Schema.sql");
+
+                        if (!File.Exists(sqlFilePath))
+                        {
+                            MessageBox.Show($"SQL script file not found at {sqlFilePath}");
+                            return;
+                        }
+
+                        string script = File.ReadAllText(sqlFilePath);
+
+                        IEnumerable<string> commands = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+                        using (SqlConnection connection = new SqlConnection(masterConnectionString))
+                        {
+                            connection.Open();
+
+                            foreach (string command in commands)
+                            {
+                                if (string.IsNullOrWhiteSpace(command))
+                                    continue;
+
+                                using (SqlCommand sqlCommand = new SqlCommand(command, connection))
+                                {
+                                    sqlCommand.ExecuteNonQuery();
+                                }
+                            }
+                        }
+
+                        MessageBox.Show("Database and tables created successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                if (!DataExistsInDatabase())
+                {
+                    var result = MessageBox.Show("I see your databases don't have test data initalized, do you want me to fill in the databases for you?", "Database Initalizer", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            string sqlFilePath = Path.Combine(Application.StartupPath, "Initial_Test_Values.sql");
+
+                            if (!File.Exists(sqlFilePath))
+                            {
+                                MessageBox.Show($"SQL script file not found at {sqlFilePath}");
+                                return;
+                            }
+
+                            string script = File.ReadAllText(sqlFilePath);
+
+                            using (SqlConnection connection = new SqlConnection(masterConnectionString))
+                            {
+                                connection.Open();
+
+                                using (SqlCommand sqlCommand = new SqlCommand(script, connection))
+                                {
+                                    sqlCommand.ExecuteNonQuery();
+                                }
+                            }
+
+                            MessageBox.Show("Database and tables created successfully.");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
+                        }
+                    }
+                }
+            }
+        }
+
+        private static bool DataExistsInDatabase()
+        {
+            string query = $"SELECT TOP 1 * FROM @tableName";
+
+            using (SqlConnection connection = new SqlConnection(databaseConnectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@tableName", booksTableName);
+
+                try
+                {
+                    connection.Open();
+                    using SqlDataReader reader = command.ExecuteReader();
+                    return reader.HasRows;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error checking database existence: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+        private static bool DatabaseExists()
+        {
+            string query = "SELECT database_id FROM sys.databases WHERE Name = @databaseName";
+
+            using (SqlConnection connection = new SqlConnection(databaseConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@databaseName", databaseName);
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        return (result != null);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error checking database existence: {ex.Message}");
+                        return false;
+                    }
+                }
+            }
         }
 
         private void SaveBook_Click(object sender, EventArgs e)
