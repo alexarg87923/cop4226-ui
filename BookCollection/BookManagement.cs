@@ -34,8 +34,18 @@ namespace BookCollection
             button6.Click += SaveCollection_Click;
             button5.Click += DeleteCollection_Click;
 
-            //InitializeDatabase();
-            //InitializeData();
+            InitializeDatabase();
+            InitializeData();
+            LoadBookComponents();
+        }
+
+        private void LoadBookComponents()
+        {
+            textBox1.Text = books[current_book_index].BookId.ToString();
+            textBox2.Text = books[current_book_index].Title;
+            textBox4.Text = books[current_book_index].ISBN;
+            textBox5.Text = books[current_book_index].Genre;
+            textBox6.Text = books[current_book_index].PublicationDate.ToString();
         }
 
         private void InitializeData()
