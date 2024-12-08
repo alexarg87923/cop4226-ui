@@ -707,10 +707,10 @@ namespace BookCollection
         {
             try
             {
-                string query = "DROP DATABASE BookCollectionDB";
+                string query = "DROP TABLE Books; DROP TABLE Authors; DROP TABLE BookAuthors; DROP TABLE Collections; DROP TABLE CollectionBooks;";
 
 
-                using (SqlConnection connection = new SqlConnection(masterConnectionString))
+                using (SqlConnection connection = new SqlConnection(databaseConnectionString))
                 {
                     connection.Open();
 
