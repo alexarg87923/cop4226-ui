@@ -46,6 +46,8 @@ namespace BookCollection
             textBox4.Text = books[current_book_index].ISBN;
             textBox5.Text = books[current_book_index].Genre;
             textBox6.Text = books[current_book_index].PublicationDate.ToString();
+
+            button1.Enabled = false;
         }
 
         private void LoadAuthorComponents()
@@ -792,6 +794,8 @@ namespace BookCollection
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
+
+            button1.Enabled = true;
         }
 
         private void NewAuthor(object sender, EventArgs e)
