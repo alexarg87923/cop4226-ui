@@ -48,6 +48,13 @@ namespace BookCollection
             textBox6.Text = books[current_book_index].PublicationDate.ToString();
         }
 
+        private void LoadAuthorComponents()
+        {
+            textBox9.Text = authorList[current_author_index].AuthorId.ToString();
+            textBox10.Text = authorList[current_author_index].Name.ToString();
+            textBox11.Text = authorList[current_author_index].BirthDate.ToString();
+        }
+
         private void InitializeData()
         {
             string book_query = $"SELECT * FROM Books";
@@ -726,6 +733,32 @@ namespace BookCollection
             }
         }
 
+        private void AuthorPrev(object sender, EventArgs e)
+        {
+            if (current_author_index == 0)
+            {
+                current_author_index = authorList.Count - 1;
+            }
+            else
+            {
+                current_author_index--;
+            }
+            LoadAuthorComponents();
+        }
+
+        private void AuthorNext(object sender, EventArgs e)
+        {
+            if (current_author_index == authorList.Count - 1)
+            {
+                current_author_index = 0;
+            }
+            else
+            {
+                current_author_index++;
+            }
+            LoadAuthorComponents();
+        }
+
         private void BookPrev(object sender, EventArgs e)
         {
             if (current_book_index == 0)
@@ -759,6 +792,28 @@ namespace BookCollection
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
+        }
+
+        private void NewAuthor(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+        }
+
+
+        private void SelectAuthors(object sender, EventArgs e)
+        {
+            using (var selectAuthorsForm = new SelectAuthorsDialog(authorList))
+            {
+                var result = selectAuthorsForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    List<int> selectedAuthorIds = selectAuthorsForm.SelectedAuthorIds;
+                }
+            }
         }
     }
 }
