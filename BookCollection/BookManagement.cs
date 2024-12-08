@@ -1,4 +1,4 @@
-using System.IO;
+using System.Data;
 using System.Text.RegularExpressions;
 using BookCollection.Items;
 using BookCollectionDB;
@@ -13,6 +13,14 @@ namespace BookCollection
         private string booksTableName = "Books";
         public string databaseConnectionString { get => $"Server=(localDB)\\MSSQLLocalDB;Database={databaseName};Trusted_Connection=True;"; set => databaseConnectionString = value; }
 
+        List<Book> books = new List<Book>();
+        int current_book_index = 0;
+        List<Author> authorList = new List<Author>();
+        int current_author_index = 0;
+        List<Collection> collectionList = new List<Collection>();
+        int current_collection_index = 0;
+        List<CollectionBook> collectionBooksList = new List<CollectionBook>();
+
         public BookManagement()
         {
             InitializeComponent();
@@ -20,15 +28,92 @@ namespace BookCollection
             button1.Click += SaveBook_Click;
             button2.Click += DeleteBook_Click;
 
-
             button3.Click += SaveAuthor_Click;
             button4.Click += DeleteAuthor_Click;
-
 
             button6.Click += SaveCollection_Click;
             button5.Click += DeleteCollection_Click;
 
             //InitializeDatabase();
+            //InitializeData();
+        }
+
+        private void InitializeData()
+        {
+            string book_query = $"SELECT * FROM Books";
+            string author_query = $"SELECT * FROM Authors";
+            string collections_query = $"SELECT * FROM Collections";
+            string collection_books_query = $"SELECT * FROM CollectionBooks";
+
+            using (SqlConnection connection = new SqlConnection(databaseConnectionString))
+            {
+                SqlCommand books_command = new SqlCommand(book_query, connection);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = books_command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Book tmpBook = new Book();
+                            tmpBook.BookId = reader.GetInt32(0);
+                            tmpBook.Title = reader.GetString(1);
+                            tmpBook.PublicationDate = reader.GetDateTime(2);
+                            tmpBook.Sales = reader.GetInt32(3);
+                            tmpBook.ISBN = reader.GetString(4);
+                            tmpBook.Genre = reader.GetString(5);
+                            tmpBook.Summary = reader.GetString(6);
+                            books.Add(tmpBook);
+                        }
+                    }
+
+                    SqlCommand author_command = new SqlCommand(author_query, connection);
+                    using (SqlDataReader reader = author_command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Author tmpAuthor = new Author();
+                            tmpAuthor.AuthorId = reader.GetInt32(0);
+                            tmpAuthor.Name = reader.GetString(1);
+                            tmpAuthor.BirthDate = reader.GetDateTime(2);
+                            tmpAuthor.Biography = reader.GetString(3);
+                            authorList.Add(tmpAuthor);
+                        }
+                    }
+
+
+                    SqlCommand collections_command = new SqlCommand(collections_query, connection);
+                    using (SqlDataReader reader = collections_command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Collection tmpCollection = new Collection();
+                            tmpCollection.CollectionId = reader.GetInt32(0);
+                            tmpCollection.Owner = reader.GetString(1);
+                            tmpCollection.Name = reader.GetString(2);
+                            tmpCollection.Description = reader.GetString(3);
+                            collectionList.Add(tmpCollection);
+                        }
+                    }
+
+                    SqlCommand collection_books_command = new SqlCommand(collection_books_query, connection);
+                    using (SqlDataReader reader = collection_books_command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            CollectionBook tmpCollectionBook = new CollectionBook();
+                            tmpCollectionBook.CollectionId = reader.GetInt32(0);
+                            tmpCollectionBook.BookId = reader.GetInt32(1);
+                            collectionBooksList.Add(tmpCollectionBook);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading data: {ex.Message}");
+                }
+            }
         }
 
 
@@ -287,7 +372,6 @@ namespace BookCollection
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
-            textBox3.Text = "";
         }
 
         private void SaveAuthor_Click(object sender, EventArgs e)
