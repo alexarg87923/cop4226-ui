@@ -159,7 +159,7 @@ namespace BookCollection
                     }
                 }
 
-                MessageBox.Show("Database and tables created successfully.");
+                MessageBox.Show("Data filled in properly!");
             }
             catch (Exception ex)
             {
