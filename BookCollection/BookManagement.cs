@@ -711,7 +711,7 @@ namespace BookCollection
         {
             try
             {
-                string query = "DROP TABLE Collections; DROP TABLE Books; DROP TABLE Authors; DROP TABLE BookAuthors; DROP TABLE CollectionBooks;";
+                string query = "DROP TABLE BookAuthors; DROP TABLE CollectionBooks; DROP TABLE Collections; DROP TABLE Books; DROP TABLE Authors;";
 
 
                 using (SqlConnection connection = new SqlConnection(databaseConnectionString))
