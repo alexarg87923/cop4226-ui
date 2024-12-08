@@ -32,6 +32,7 @@
             label2 = new Label();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
+            resetDatabaseToolStripMenuItem = new ToolStripMenuItem();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             label8 = new Label();
@@ -95,7 +96,6 @@
             button7 = new Button();
             label20 = new Label();
             label19 = new Label();
-            resetDatabaseToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -138,7 +138,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(851, 42);
+            menuStrip1.Size = new Size(851, 40);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -146,8 +146,15 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { resetDatabaseToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(132, 38);
+            fileToolStripMenuItem.Size = new Size(132, 36);
             fileToolStripMenuItem.Text = "Database";
+            // 
+            // resetDatabaseToolStripMenuItem
+            // 
+            resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
+            resetDatabaseToolStripMenuItem.Size = new Size(359, 44);
+            resetDatabaseToolStripMenuItem.Text = "Reset Database";
+            resetDatabaseToolStripMenuItem.Click += resetDatabaseToolStripMenuItem_Click;
             // 
             // tabControl1
             // 
@@ -806,13 +813,6 @@
             label19.Name = "label19";
             label19.Size = new Size(0, 32);
             label19.TabIndex = 0;
-            // 
-            // resetDatabaseToolStripMenuItem
-            // 
-            resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
-            resetDatabaseToolStripMenuItem.Size = new Size(359, 44);
-            resetDatabaseToolStripMenuItem.Text = "Reset Database";
-            resetDatabaseToolStripMenuItem.Click += resetDatabaseToolStripMenuItem_Click;
             // 
             // BookManagement
             // 

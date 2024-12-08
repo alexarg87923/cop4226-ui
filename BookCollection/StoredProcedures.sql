@@ -1,4 +1,5 @@
-
+USE BookCollectionDB;
+GO
 
 CREATE PROCEDURE AddBook
     @Title VARCHAR(255),

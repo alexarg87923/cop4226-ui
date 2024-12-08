@@ -40,23 +40,44 @@ namespace BookCollection
                 {
                     try
                     {
-                        string sqlFilePath = Path.Combine(Application.StartupPath, "Book_Collection_Schema.sql");
+                        string schemaSqlFilePath = Path.Combine(Application.StartupPath, "Book_Collection_Schema.sql");
+                        string spSqlFilePath = Path.Combine(Application.StartupPath, "StoredProcedures.sql");
 
-                        if (!File.Exists(sqlFilePath))
+                        if (!File.Exists(schemaSqlFilePath))
                         {
-                            MessageBox.Show($"SQL script file not found at {sqlFilePath}");
+                            MessageBox.Show($"SQL script file not found at {schemaSqlFilePath}");
                             return;
                         }
 
-                        string script = File.ReadAllText(sqlFilePath);
+                        string schemaScript = File.ReadAllText(schemaSqlFilePath);
 
-                        IEnumerable<string> commands = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                        if (!File.Exists(spSqlFilePath))
+                        {
+                            MessageBox.Show($"SQL script file not found at {spSqlFilePath}");
+                            return;
+                        }
+
+                        string spScript = File.ReadAllText(spSqlFilePath);
+
+                        IEnumerable<string> schemaCommands = Regex.Split(schemaScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                        IEnumerable<string> spCommands = Regex.Split(spScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
 
                         using (SqlConnection connection = new SqlConnection(masterConnectionString))
                         {
                             connection.Open();
 
-                            foreach (string command in commands)
+                            foreach (string command in schemaCommands)
+                            {
+                                if (string.IsNullOrWhiteSpace(command))
+                                    continue;
+
+                                using (SqlCommand sqlCommand = new SqlCommand(command, connection))
+                                {
+                                    sqlCommand.ExecuteNonQuery();
+                                }
+                            }
+
+                            foreach (string command in spCommands)
                             {
                                 if (string.IsNullOrWhiteSpace(command))
                                     continue;
