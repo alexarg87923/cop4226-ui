@@ -1,3 +1,4 @@
+using System.IO;
 using System.Text.RegularExpressions;
 using BookCollection.Items;
 using BookCollectionDB;
@@ -7,10 +8,10 @@ namespace BookCollection
 {
     public partial class BookManagement : Form
     {
-        private static string masterConnectionString = "Server=(localDB)\\MSSQLLocalDB;Database=master;Trusted_Connection=True;";
-        private static string databaseName = "BookCollectionDB";
-        private static string booksTableName = "Books";
-        private static string databaseConnectionString = $"Server=(localDB)\\MSSQLLocalDB;Database={databaseName};Trusted_Connection=True;";
+        private string masterConnectionString = "Server=(localDB)\\MSSQLLocalDB;Database=master;Trusted_Connection=True;";
+        private string databaseName = "BookCollectionDB";
+        private string booksTableName = "Books";
+        public string databaseConnectionString { get => $"Server=(localDB)\\MSSQLLocalDB;Database={databaseName};Trusted_Connection=True;"; set => databaseConnectionString = value; }
 
         public BookManagement()
         {
@@ -27,76 +28,13 @@ namespace BookCollection
             button6.Click += SaveCollection_Click;
             button5.Click += DeleteCollection_Click;
 
-            InitializeDatabase();
+            //InitializeDatabase();
         }
 
 
-        private static void InitializeDatabase()
+        private void InitializeDatabase()
         {
-            if (!DatabaseExists())
-            {
-                var result = MessageBox.Show("I see you don't have the databases initalized, do you want me to initialize them for you?", "Database Initalizer", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        string schemaSqlFilePath = Path.Combine(Application.StartupPath, "Book_Collection_Schema.sql");
-                        string spSqlFilePath = Path.Combine(Application.StartupPath, "StoredProcedures.sql");
-
-                        if (!File.Exists(schemaSqlFilePath))
-                        {
-                            MessageBox.Show($"SQL script file not found at {schemaSqlFilePath}");
-                            return;
-                        }
-
-                        string schemaScript = File.ReadAllText(schemaSqlFilePath);
-
-                        if (!File.Exists(spSqlFilePath))
-                        {
-                            MessageBox.Show($"SQL script file not found at {spSqlFilePath}");
-                            return;
-                        }
-
-                        string spScript = File.ReadAllText(spSqlFilePath);
-
-                        IEnumerable<string> schemaCommands = Regex.Split(schemaScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
-                        IEnumerable<string> spCommands = Regex.Split(spScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
-
-                        using (SqlConnection connection = new SqlConnection(masterConnectionString))
-                        {
-                            connection.Open();
-
-                            foreach (string command in schemaCommands)
-                            {
-                                if (string.IsNullOrWhiteSpace(command))
-                                    continue;
-
-                                using (SqlCommand sqlCommand = new SqlCommand(command, connection))
-                                {
-                                    sqlCommand.ExecuteNonQuery();
-                                }
-                            }
-
-                            foreach (string command in spCommands)
-                            {
-                                if (string.IsNullOrWhiteSpace(command))
-                                    continue;
-
-                                using (SqlCommand sqlCommand = new SqlCommand(command, connection))
-                                {
-                                    sqlCommand.ExecuteNonQuery();
-                                }
-                            }
-                        }
-
-                        MessageBox.Show("Database and tables created successfully.");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
-                    }
-                }
-            }
+            EnsureDatabaseAttached();
 
             if (!DataExistsInDatabase())
             {
@@ -136,7 +74,114 @@ namespace BookCollection
             }
         }
 
-        private static bool DataExistsInDatabase()
+        private void EnsureDatabaseAttached()
+        {
+            bool dbExists = DatabaseExists();
+            if (!dbExists)
+            {
+                string userProfileFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                string dataFilePath = Path.Combine(userProfileFolder, $"{databaseName}.mdf");
+                string logFilePath = Path.Combine(userProfileFolder, $"{databaseName}_log.ldf");
+
+                if (System.IO.File.Exists(dataFilePath))
+                {
+                    // Attempt to attach the database.
+                    string attachQuery = $@"
+                                            CREATE DATABASE [{databaseName}]
+                                            ON (FILENAME = N'{dataFilePath}'),
+                                                (FILENAME = N'{logFilePath}')
+                                            FOR ATTACH;
+                                        ";
+
+                    using (SqlConnection connection = new SqlConnection(masterConnectionString))
+                    {
+                        using (SqlCommand cmd = new SqlCommand(attachQuery, connection))
+                        {
+                            try
+                            {
+                                connection.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show($"Successfully attached the database '{databaseName}'.");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(
+                                    $"Failed to attach the database. " +
+                                    $"Please delete any .mdf and .ldf files inside of your user's directory and restart the program.\nError: {ex.Message}"
+                                );
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var result = MessageBox.Show("I see you don't have the databases initalized, do you want me to initialize them for you?", "Database Initalizer", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            string schemaSqlFilePath = Path.Combine(Application.StartupPath, "Book_Collection_Schema.sql");
+                            string spSqlFilePath = Path.Combine(Application.StartupPath, "StoredProcedures.sql");
+
+                            if (!File.Exists(schemaSqlFilePath))
+                            {
+                                MessageBox.Show($"SQL script file not found at {schemaSqlFilePath}");
+                                return;
+                            }
+
+                            string schemaScript = File.ReadAllText(schemaSqlFilePath);
+
+                            if (!File.Exists(spSqlFilePath))
+                            {
+                                MessageBox.Show($"SQL script file not found at {spSqlFilePath}");
+                                return;
+                            }
+
+                            string spScript = File.ReadAllText(spSqlFilePath);
+
+                            IEnumerable<string> schemaCommands = Regex.Split(schemaScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                            IEnumerable<string> spCommands = Regex.Split(spScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+                            using (SqlConnection connection = new SqlConnection(masterConnectionString))
+                            {
+                                connection.Open();
+
+                                foreach (string command in schemaCommands)
+                                {
+                                    if (string.IsNullOrWhiteSpace(command))
+                                        continue;
+
+                                    using (SqlCommand sqlCommand = new SqlCommand(command, connection))
+                                    {
+                                        sqlCommand.ExecuteNonQuery();
+                                    }
+                                }
+
+                                foreach (string command in spCommands)
+                                {
+                                    if (string.IsNullOrWhiteSpace(command))
+                                        continue;
+
+                                    using (SqlCommand sqlCommand = new SqlCommand(command, connection))
+                                    {
+                                        sqlCommand.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+
+                            MessageBox.Show("Database and tables created successfully.");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private bool DataExistsInDatabase()
         {
             string query = $"SELECT TOP 1 * FROM {booksTableName}";
 
@@ -158,7 +203,7 @@ namespace BookCollection
             }
         }
 
-        private static bool DatabaseExists()
+        private bool DatabaseExists()
         {
             string query = "SELECT database_id FROM sys.databases WHERE Name = @databaseName";
 
