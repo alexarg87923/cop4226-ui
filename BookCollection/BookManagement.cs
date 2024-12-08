@@ -33,8 +33,6 @@ namespace BookCollection
 
         private static void InitializeDatabase()
         {
-            databaseConnectionString = $"Server=YOUR_SERVER_NAME;Database={databaseName};Trusted_Connection=True;";
-
             if (!DatabaseExists())
             {
                 var result = MessageBox.Show("I see you don't have the databases initalized, do you want me to initialize them for you?", "Database Initalizer", MessageBoxButtons.YesNo);
@@ -121,12 +119,11 @@ namespace BookCollection
 
         private static bool DataExistsInDatabase()
         {
-            string query = $"SELECT TOP 1 * FROM @tableName";
+            string query = $"SELECT TOP 1 * FROM {booksTableName}";
 
             using (SqlConnection connection = new SqlConnection(databaseConnectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@tableName", booksTableName);
 
                 try
                 {
