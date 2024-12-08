@@ -36,7 +36,6 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             label8 = new Label();
-            textBox3 = new TextBox();
             button2 = new Button();
             button1 = new Button();
             groupBox2 = new GroupBox();
@@ -96,6 +95,16 @@
             button7 = new Button();
             label20 = new Label();
             label19 = new Label();
+            Authors = new ListBox();
+            button12 = new Button();
+            button11 = new Button();
+            button13 = new Button();
+            button14 = new Button();
+            button15 = new Button();
+            button16 = new Button();
+            button17 = new Button();
+            button18 = new Button();
+            button19 = new Button();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -138,7 +147,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(851, 40);
+            menuStrip1.Size = new Size(955, 40);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -152,7 +161,7 @@
             // resetDatabaseToolStripMenuItem
             // 
             resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
-            resetDatabaseToolStripMenuItem.Size = new Size(359, 44);
+            resetDatabaseToolStripMenuItem.Size = new Size(309, 44);
             resetDatabaseToolStripMenuItem.Text = "Reset Database";
             resetDatabaseToolStripMenuItem.Click += resetDatabaseToolStripMenuItem_Click;
             // 
@@ -171,8 +180,11 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(button13);
+            tabPage1.Controls.Add(button11);
+            tabPage1.Controls.Add(button12);
+            tabPage1.Controls.Add(Authors);
             tabPage1.Controls.Add(label8);
-            tabPage1.Controls.Add(textBox3);
             tabPage1.Controls.Add(button2);
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(groupBox2);
@@ -198,18 +210,9 @@
             label8.TabIndex = 3;
             label8.Text = "Authors";
             // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(28, 698);
-            textBox3.Margin = new Padding(4, 2, 4, 2);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(689, 192);
-            textBox3.TabIndex = 0;
-            // 
             // button2
             // 
-            button2.Location = new Point(214, 934);
+            button2.Location = new Point(474, 934);
             button2.Margin = new Padding(4, 2, 4, 2);
             button2.Name = "button2";
             button2.Size = new Size(173, 47);
@@ -219,7 +222,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(28, 934);
+            button1.Location = new Point(236, 934);
             button1.Margin = new Padding(4, 2, 4, 2);
             button1.Name = "button1";
             button1.Size = new Size(173, 47);
@@ -351,6 +354,9 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(button16);
+            tabPage2.Controls.Add(button15);
+            tabPage2.Controls.Add(button14);
             tabPage2.Controls.Add(button4);
             tabPage2.Controls.Add(button3);
             tabPage2.Controls.Add(textBox7);
@@ -368,7 +374,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(251, 764);
+            button4.Location = new Point(467, 764);
             button4.Margin = new Padding(4, 2, 4, 2);
             button4.Name = "button4";
             button4.Size = new Size(206, 47);
@@ -378,7 +384,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(7, 764);
+            button3.Location = new Point(238, 764);
             button3.Margin = new Padding(4, 2, 4, 2);
             button3.Name = "button3";
             button3.Size = new Size(206, 47);
@@ -489,6 +495,9 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(button19);
+            tabPage3.Controls.Add(button18);
+            tabPage3.Controls.Add(button17);
             tabPage3.Controls.Add(label14);
             tabPage3.Controls.Add(button5);
             tabPage3.Controls.Add(button6);
@@ -517,7 +526,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(251, 764);
+            button5.Location = new Point(503, 764);
             button5.Margin = new Padding(4, 2, 4, 2);
             button5.Name = "button5";
             button5.Size = new Size(206, 47);
@@ -527,7 +536,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(7, 764);
+            button6.Location = new Point(250, 764);
             button6.Margin = new Padding(4, 2, 4, 2);
             button6.Name = "button6";
             button6.Size = new Size(206, 47);
@@ -814,11 +823,109 @@
             label19.Size = new Size(0, 32);
             label19.TabIndex = 0;
             // 
+            // Authors
+            // 
+            Authors.FormattingEnabled = true;
+            Authors.Location = new Point(28, 696);
+            Authors.Name = "Authors";
+            Authors.Size = new Size(689, 196);
+            Authors.TabIndex = 6;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(544, 18);
+            button12.Margin = new Padding(4, 2, 4, 2);
+            button12.Name = "button12";
+            button12.Size = new Size(173, 47);
+            button12.TabIndex = 8;
+            button12.Text = "Next";
+            button12.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(339, 18);
+            button11.Margin = new Padding(4, 2, 4, 2);
+            button11.Name = "button11";
+            button11.Size = new Size(173, 47);
+            button11.TabIndex = 9;
+            button11.Text = "Prev";
+            button11.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            button13.Location = new Point(28, 934);
+            button13.Margin = new Padding(4, 2, 4, 2);
+            button13.Name = "button13";
+            button13.Size = new Size(173, 47);
+            button13.TabIndex = 10;
+            button13.Text = "New Book";
+            button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            button14.Location = new Point(5, 764);
+            button14.Margin = new Padding(4, 2, 4, 2);
+            button14.Name = "button14";
+            button14.Size = new Size(206, 47);
+            button14.TabIndex = 6;
+            button14.Text = "New Author";
+            button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            button15.Location = new Point(359, 26);
+            button15.Margin = new Padding(4, 2, 4, 2);
+            button15.Name = "button15";
+            button15.Size = new Size(206, 47);
+            button15.TabIndex = 7;
+            button15.Text = "Prev";
+            button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            button16.Location = new Point(587, 26);
+            button16.Margin = new Padding(4, 2, 4, 2);
+            button16.Name = "button16";
+            button16.Size = new Size(206, 47);
+            button16.TabIndex = 8;
+            button16.Text = "Next";
+            button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            button17.Location = new Point(8, 764);
+            button17.Margin = new Padding(4, 2, 4, 2);
+            button17.Name = "button17";
+            button17.Size = new Size(206, 47);
+            button17.TabIndex = 12;
+            button17.Text = "New Collection";
+            button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            button18.Location = new Point(365, 26);
+            button18.Margin = new Padding(4, 2, 4, 2);
+            button18.Name = "button18";
+            button18.Size = new Size(206, 47);
+            button18.TabIndex = 13;
+            button18.Text = "Prev";
+            button18.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            button19.Location = new Point(579, 26);
+            button19.Margin = new Padding(4, 2, 4, 2);
+            button19.Name = "button19";
+            button19.Size = new Size(206, 47);
+            button19.TabIndex = 14;
+            button19.Text = "Next";
+            button19.UseVisualStyleBackColor = true;
+            // 
             // BookManagement
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(851, 1158);
+            ClientSize = new Size(955, 1292);
             Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -874,7 +981,6 @@
         private Label label7;
         private Label label6;
         private Label label5;
-        private TextBox textBox3;
         private Label label8;
         private Label label9;
         private GroupBox groupBox3;
@@ -922,5 +1028,15 @@
         private DataGridViewTextBoxColumn FISBN;
         private DataGridViewTextBoxColumn FOwner;
         private ToolStripMenuItem resetDatabaseToolStripMenuItem;
+        private Button button13;
+        private Button button11;
+        private Button button12;
+        private ListBox Authors;
+        private Button button14;
+        private Button button16;
+        private Button button15;
+        private Button button19;
+        private Button button18;
+        private Button button17;
     }
 }
