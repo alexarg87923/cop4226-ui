@@ -16,15 +16,15 @@ namespace BookCollection
         {
             InitializeComponent();
 
-            button1.Click += SaveBook_Click;      
-            button2.Click += DeleteBook_Click;    
+            button1.Click += SaveBook_Click;
+            button2.Click += DeleteBook_Click;
 
-            
-            button3.Click += SaveAuthor_Click;    
-            button4.Click += DeleteAuthor_Click;  
 
-            
-            button6.Click += SaveCollection_Click;    
+            button3.Click += SaveAuthor_Click;
+            button4.Click += DeleteAuthor_Click;
+
+
+            button6.Click += SaveCollection_Click;
             button5.Click += DeleteCollection_Click;
 
             InitializeDatabase();
@@ -143,7 +143,7 @@ namespace BookCollection
         {
             string query = "SELECT database_id FROM sys.databases WHERE Name = @databaseName";
 
-            using (SqlConnection connection = new SqlConnection(databaseConnectionString))
+            using (SqlConnection connection = new SqlConnection(masterConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -193,14 +193,14 @@ namespace BookCollection
         {
             try
             {
-                
+
                 if (int.TryParse(textBox1.Text, out int bookId))
                 {
-                    
+
                     Book book = new Book { BookId = bookId };
                     book.Delete();
 
-                    
+
                     ClearBookForm();
                     MessageBox.Show("Book deleted successfully!");
                 }
@@ -215,7 +215,7 @@ namespace BookCollection
             }
         }
 
-        
+
         private void ClearBookForm()
         {
             textBox1.Text = "";
@@ -243,7 +243,7 @@ namespace BookCollection
                     Biography = textBox7.Text
                 };
 
-                
+
                 if (author.AuthorId == 0)
                 {
                     author.Add();
@@ -255,7 +255,7 @@ namespace BookCollection
                     MessageBox.Show("Author updated successfully!");
                 }
 
-                
+
                 ClearAuthorForm();
             }
             catch (Exception ex)
@@ -264,7 +264,7 @@ namespace BookCollection
             }
         }
 
-        
+
         private void ClearAuthorForm()
         {
             textBox9.Text = "";
@@ -277,14 +277,14 @@ namespace BookCollection
         {
             try
             {
-                
+
                 if (int.TryParse(textBox9.Text, out int authorId))
                 {
-                    
+
                     Author author = new Author { AuthorId = authorId };
                     author.Delete();
 
-                    
+
                     ClearAuthorForm();
                     MessageBox.Show("Author deleted successfully!");
                 }
@@ -316,7 +316,7 @@ namespace BookCollection
                     Description = textBox8.Text
                 };
 
-                
+
                 if (collection.CollectionId == 0)
                 {
                     collection.Add();
@@ -328,7 +328,7 @@ namespace BookCollection
                     MessageBox.Show("Collection updated successfully!");
                 }
 
-                
+
                 ClearCollectionForm();
                 PopulateCollectionsOverview();
             }
@@ -350,14 +350,14 @@ namespace BookCollection
         {
             try
             {
-                
+
                 if (int.TryParse(textBox14.Text, out int collectionId))
                 {
-                    
+
                     Collection collection = new Collection { CollectionId = collectionId };
                     collection.Delete();
 
-                   
+
                     ClearCollectionForm();
                     MessageBox.Show("Collection deleted successfully!");
                 }
@@ -375,13 +375,13 @@ namespace BookCollection
         {
             try
             {
-                
+
                 tabPage4.Controls.Clear();
 
-                
+
                 List<Collection> collections = FetchCollectionsFromDatabase();
 
-                
+
                 int verticalOffset = 10;
 
                 foreach (Collection collection in collections)
@@ -396,7 +396,7 @@ namespace BookCollection
                         Left = 10
                     };
 
-                
+
                     DataGridView dataGridView = new DataGridView
                     {
                         Width = groupBox.Width - 20,
@@ -404,7 +404,7 @@ namespace BookCollection
                         Top = 30,
                         Left = 10,
                         AutoGenerateColumns = false,
-                        DataSource = collection.ListBooks() 
+                        DataSource = collection.ListBooks()
                     };
 
                     // Add columns to the DataGridView
@@ -412,7 +412,7 @@ namespace BookCollection
                     dataGridView.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Author", DataPropertyName = "Author", Width = 150 });
                     dataGridView.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "ISBN", DataPropertyName = "ISBN", Width = 150 });
 
-                    
+
                     Button addBookButton = new Button
                     {
                         Text = "Add Book",
@@ -421,7 +421,7 @@ namespace BookCollection
                     };
                     addBookButton.Click += (s, e) => AddBookToCollection_Click(s, e, collection.CollectionId);
 
-                    
+
                     Button removeBookButton = new Button
                     {
                         Text = "Remove Book",
@@ -430,15 +430,15 @@ namespace BookCollection
                     };
                     removeBookButton.Click += (s, e) => RemoveBookFromCollection_Click(s, e, collection.CollectionId);
 
-                    
+
                     groupBox.Controls.Add(dataGridView);
                     groupBox.Controls.Add(addBookButton);
                     groupBox.Controls.Add(removeBookButton);
 
-                    
+
                     tabPage4.Controls.Add(groupBox);
 
-                    
+
                     verticalOffset += groupBox.Height + 20;
                 }
             }
@@ -453,7 +453,7 @@ namespace BookCollection
         {
             try
             {
-                
+
                 string bookIdInput = Microsoft.VisualBasic.Interaction.InputBox("Enter the Book ID to add to the collection:", "Add Book");
                 if (int.TryParse(bookIdInput, out int bookId))
                 {
@@ -465,7 +465,7 @@ namespace BookCollection
                     collectionBook.Add();
                     MessageBox.Show("Book added to collection successfully!");
 
-                    
+
                     PopulateCollectionsOverview();
                 }
                 else
@@ -496,7 +496,7 @@ namespace BookCollection
                     collectionBook.Remove();
                     MessageBox.Show("Book removed from collection successfully!");
 
-                    
+
                     PopulateCollectionsOverview();
                 }
                 else
@@ -536,6 +536,36 @@ namespace BookCollection
             return collections;
         }
 
+        private void resetDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sqlFilePath = Path.Combine(Application.StartupPath, "ResetDB.sql");
 
+                if (!File.Exists(sqlFilePath))
+                {
+                    MessageBox.Show($"SQL script file not found at {sqlFilePath}");
+                    return;
+                }
+
+                string script = File.ReadAllText(sqlFilePath);
+
+                using (SqlConnection connection = new SqlConnection(masterConnectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand sqlCommand = new SqlCommand(script, connection))
+                    {
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Database reset successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while initializing the database: {ex.Message}");
+            }
+        }
     }
 }
