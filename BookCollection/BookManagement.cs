@@ -34,9 +34,9 @@ namespace BookCollection
             button6.Click += SaveCollection_Click;
             button5.Click += DeleteCollection_Click;
 
-            //InitializeDatabase();
-            //InitializeData();
-            //LoadBookComponents();
+            InitializeDatabase();
+            InitializeData();
+            LoadBookComponents();
         }
 
         private void LoadBookComponents()
@@ -741,7 +741,7 @@ namespace BookCollection
 
         private void BookNext(object sender, EventArgs e)
         {
-            if(current_book_index == books.Count-1)
+            if (current_book_index == books.Count - 1)
             {
                 current_book_index = 0;
             }
@@ -750,6 +750,15 @@ namespace BookCollection
                 current_book_index++;
             }
             LoadBookComponents();
+        }
+
+        private void NewBook(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
         }
     }
 }

@@ -209,6 +209,7 @@
             button13.TabIndex = 10;
             button13.Text = "New Book";
             button13.UseVisualStyleBackColor = true;
+            button13.Click += NewBook;
             // 
             // button11
             // 
