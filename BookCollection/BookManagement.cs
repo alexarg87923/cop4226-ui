@@ -116,7 +116,7 @@ namespace BookCollection
 
                         string script = File.ReadAllText(sqlFilePath);
 
-                        using (SqlConnection connection = new SqlConnection(databaseConnectionStringc))
+                        using (SqlConnection connection = new SqlConnection(databaseConnectionString))
                         {
                             connection.Open();
 
