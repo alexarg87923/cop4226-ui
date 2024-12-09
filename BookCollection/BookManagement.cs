@@ -68,6 +68,11 @@ namespace BookCollection
             textBox11.Text = authorList[current_author_index].BirthDate.ToString();
         }
 
+        private void UpdateAuthorListInBooksComponent(List<int> author_ids)
+        {
+            Authors.DataSource = author_ids.Join(authorList, authorId => authorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
+        }
+
         private void InitializeData()
         {
             books.Clear();
@@ -847,6 +852,7 @@ namespace BookCollection
                 if (result == DialogResult.OK)
                 {
                     List<int> selectedAuthorIds = selectAuthorsForm.SelectedAuthorIds;
+                    UpdateAuthorListInBooksComponent(selectedAuthorIds);
                 }
             }
         }
