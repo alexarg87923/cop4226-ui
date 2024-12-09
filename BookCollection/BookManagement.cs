@@ -430,6 +430,7 @@ namespace BookCollection
         }
 
 
+       
         private void ClearBookForm()
         {
             textBox1.Text = "";
@@ -440,6 +441,7 @@ namespace BookCollection
 
             Authors.DataSource = null;
             Authors.Items.Clear();
+            Authors.DataSource = null;
         }
 
         private void SaveAuthor_Click(object sender, EventArgs e)
