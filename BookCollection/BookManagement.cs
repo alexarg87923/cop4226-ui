@@ -514,7 +514,7 @@ namespace BookCollection
                     MessageBox.Show("Author updated successfully!");
                 }
 
-                clearAuthorForm();
+                InitializeData();
                 LoadAuthorComponents();
             }
             catch (Exception ex)
