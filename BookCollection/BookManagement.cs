@@ -76,6 +76,7 @@ namespace BookCollection
 
         private void UpdateAuthorListInBooksComponent(List<int> author_ids)
         {
+            Authors.DisplayMember = "Name";
             Authors.DataSource = author_ids.Join(authorList, authorId => authorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
         }
 
