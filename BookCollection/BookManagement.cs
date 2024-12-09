@@ -28,6 +28,7 @@ namespace BookCollection
         List<BookAuthor> collectionBookAuthors = new List<BookAuthor>();
 
         bool newBookToggle = false;
+        bool newAuthorToggle = false;
 
         public BookManagement()
         {
@@ -887,13 +888,36 @@ namespace BookCollection
             current_book_index = -1;
         }
 
+        private void clearAuthorForm()
+        {
+            textBox9.Text = "";
+            textBox10.Text = "";
+            textBox11.Text = "";
+
+            Authors.DataSource = null;
+            Authors.Refresh();
+        }
+
         private void NewAuthor(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
+            if (newAuthorToggle)
+            {
+                current_author_index = 0;
+                newAuthorToggle = false;
+                button14.Text = "New Author";
+                button15.Enabled = true;
+                button16.Enabled = true;
+                LoadBookComponents();
+                return;
+            }
+
+            clearAuthorForm();
+
+            newAuthorToggle = true;
+            button14.Text = "Cancel";
+            button15.Enabled = false;
+            button16.Enabled = false;
+            current_author_index = -1;
         }
 
 
