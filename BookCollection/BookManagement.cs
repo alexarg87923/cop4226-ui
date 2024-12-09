@@ -391,10 +391,19 @@ namespace BookCollection
                 {
                     Title = textBox2.Text,
                     ISBN = textBox4.Text,
-                    Genre = textBox5.Text
+                    Genre = textBox5.Text,
+                    PublicationDate = DateTime.Parse(textBox6.Text)
                 };
 
-                books.Add(book);
+                if (newBookToggle)
+                {
+                    book.Add();
+                    books.Add(book);
+                } else
+                {
+                    book.Update();
+                }
+
                 LoadBookComponents();
                 MessageBox.Show("Book saved successfully!");
             }
@@ -415,8 +424,10 @@ namespace BookCollection
                     Book book = new Book { BookId = bookId };
                     book.Delete();
 
+                    books.Remove(books.First(book => book.BookId == bookId));
 
                     ClearBookForm();
+                    LoadBookComponents();
                     MessageBox.Show("Book deleted successfully!");
                 }
                 else
