@@ -438,6 +438,7 @@ namespace BookCollection
             textBox5.Text = "";
             textBox6.Text = "";
 
+            Authors.DataSource = null;
             Authors.Items.Clear();
         }
 
