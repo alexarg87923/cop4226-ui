@@ -24,6 +24,8 @@ namespace BookCollection
         List<CollectionBook> collectionBooksList = new List<CollectionBook>();
         List<BookAuthor> collectionBookAuthors = new List<BookAuthor>();
 
+        bool newBookToggle = false;
+
         public BookManagement()
         {
             InitializeComponent();
@@ -45,6 +47,7 @@ namespace BookCollection
             InitializeData();
             LoadBookComponents();
             LoadAuthorComponents();
+            LoadCollectionComponents();
         }
 
         private void LoadBookComponents()
@@ -800,6 +803,8 @@ namespace BookCollection
 
         private void BookPrev(object sender, EventArgs e)
         {
+            if (current_book_index == -1) return;
+
             if (current_book_index == 0)
             {
                 current_book_index = books.Count - 1;
@@ -813,6 +818,8 @@ namespace BookCollection
 
         private void BookNext(object sender, EventArgs e)
         {
+            if (current_book_index == -1) return;
+
             if (current_book_index == books.Count - 1)
             {
                 current_book_index = 0;
@@ -826,11 +833,29 @@ namespace BookCollection
 
         private void NewBook(object sender, EventArgs e)
         {
+            if (newBookToggle)
+            {
+                current_book_index = 0;
+                newBookToggle = false;
+                button13.Text = "New Book";
+                button2.Enabled = true;
+                button11.Enabled = true;
+                button12.Enabled = true;
+                return;
+            }
+
             textBox1.Text = "";
             textBox2.Text = "";
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
+
+            newBookToggle = true;
+            button13.Text = "Cancel";
+            button2.Enabled = false;
+            button11.Enabled = false;
+            button12.Enabled = false;
+            current_book_index = -1;
         }
 
         private void NewAuthor(object sender, EventArgs e)
