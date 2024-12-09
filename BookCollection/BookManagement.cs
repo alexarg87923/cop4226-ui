@@ -36,6 +36,10 @@ namespace BookCollection
             button6.Click += SaveCollection_Click;
             button5.Click += DeleteCollection_Click;
 
+            button18.Click += CollectionPrev;
+            button19.Click += CollectionNext;
+            button17.Click += NewCollection;
+
             InitializeDatabase();
             InitializeData();
             LoadBookComponents();
@@ -846,5 +850,50 @@ namespace BookCollection
                 }
             }
         }
+
+        private void LoadCollectionComponents()
+        {
+            textBox14.Text = collectionList[current_collection_index].CollectionId.ToString();
+            textBox13.Text = collectionList[current_collection_index].Name;
+            textBox12.Text = collectionList[current_collection_index].Owner;
+            textBox8.Text = collectionList[current_collection_index].Description;
+        }
+
+        private void CollectionPrev(object sender, EventArgs e)
+        {
+            if (current_collection_index == 0)
+            {
+                current_collection_index = collectionList.Count - 1;
+            }
+            else
+            {
+                current_collection_index--;
+            }
+            LoadCollectionComponents();
+        }
+
+        private void CollectionNext(object sender, EventArgs e)
+        {
+            if (current_collection_index == collectionList.Count - 1)
+            {
+                current_collection_index = 0;
+            }
+            else
+            {
+                current_collection_index++;
+            }
+            LoadCollectionComponents();
+        }
+
+        private void NewCollection(object sender, EventArgs e)
+        {
+            textBox14.Text = "";  
+            textBox13.Text = "";  
+            textBox12.Text = "";  
+            textBox8.Text = "";   
+
+            button6.Enabled = true;  
+        }
     }
+
 }
