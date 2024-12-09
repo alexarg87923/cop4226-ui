@@ -54,7 +54,7 @@ namespace BookCollection
             textBox5.Text = books[current_book_index].Genre;
             textBox6.Text = books[current_book_index].PublicationDate.ToString();
             
-            Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author);
+            Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
             Authors.DisplayMember = "Name";
             Authors.SelectionMode = SelectionMode.MultiExtended;
 
