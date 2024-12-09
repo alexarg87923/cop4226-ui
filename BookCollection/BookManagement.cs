@@ -905,9 +905,10 @@ namespace BookCollection
                 current_author_index = 0;
                 newAuthorToggle = false;
                 button14.Text = "New Author";
+                button4.Enabled = true;
                 button15.Enabled = true;
                 button16.Enabled = true;
-                LoadBookComponents();
+                LoadAuthorComponents();
                 return;
             }
 
@@ -915,6 +916,7 @@ namespace BookCollection
 
             newAuthorToggle = true;
             button14.Text = "Cancel";
+            button4.Enabled = false;
             button15.Enabled = false;
             button16.Enabled = false;
             current_author_index = -1;
