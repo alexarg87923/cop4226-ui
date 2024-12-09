@@ -385,8 +385,8 @@ namespace BookCollection
                     Genre = textBox5.Text
                 };
 
-                book.Add();
-                InitializeData();
+                books.Add(book);
+                LoadBookComponents();
                 MessageBox.Show("Book saved successfully!");
             }
             catch (Exception ex)
@@ -460,9 +460,8 @@ namespace BookCollection
                     MessageBox.Show("Author updated successfully!");
                 }
 
-                InitializeData();
-
                 ClearAuthorForm();
+                LoadAuthorComponents();
             }
             catch (Exception ex)
             {
@@ -534,7 +533,6 @@ namespace BookCollection
                     MessageBox.Show("Collection updated successfully!");
                 }
 
-                InitializeData();
                 ClearCollectionForm();
                 PopulateCollectionsOverview();
             }
