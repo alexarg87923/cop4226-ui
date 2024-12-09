@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -5,6 +6,7 @@ using BookCollection.Items;
 using BookCollectionDB;
 using Microsoft.Data.SqlClient;
 using static System.Reflection.Metadata.BlobBuilder;
+using System.Linq;
 
 namespace BookCollection
 {
@@ -394,6 +396,27 @@ namespace BookCollection
                     Genre = textBox5.Text,
                     PublicationDate = DateTime.Parse(textBox6.Text)
                 };
+
+                var curr_authors = collectionBookAuthors.Where(bookAuthor => bookAuthor.BookId == books[current_book_index].BookId).ToList();
+
+                if (curr_authors.Any() )
+                {
+                    foreach (var author in curr_authors)
+                    {
+                        author.Unlink();
+                    }
+                }
+
+
+                var authorList = Authors.DataSource as BindingList<int>;
+                foreach (var (authorid, tmpBookAuthor) in from authorid in authorList
+                                                          let tmpBookAuthor = new BookAuthor()
+                                                          select (authorid, tmpBookAuthor))
+                {
+                    tmpBookAuthor.BookId = books[current_book_index].BookId;
+                    tmpBookAuthor.AuthorId = authorid;
+                    tmpBookAuthor.Link();
+                }
 
                 if (newBookToggle)
                 {
