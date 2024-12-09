@@ -56,6 +56,7 @@
             label4 = new Label();
             label3 = new Label();
             tabPage2 = new TabPage();
+            listBox1 = new ListBox();
             button16 = new Button();
             button15 = new Button();
             button14 = new Button();
@@ -101,7 +102,6 @@
             FOwner = new DataGridViewTextBoxColumn();
             label20 = new Label();
             label19 = new Label();
-            listBox1 = new ListBox();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -158,7 +158,7 @@
             // resetDatabaseToolStripMenuItem
             // 
             resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
-            resetDatabaseToolStripMenuItem.Size = new Size(359, 44);
+            resetDatabaseToolStripMenuItem.Size = new Size(309, 44);
             resetDatabaseToolStripMenuItem.Text = "Reset Database";
             resetDatabaseToolStripMenuItem.Click += resetDatabaseToolStripMenuItem_Click;
             // 
@@ -376,6 +376,7 @@
             // 
             // textBox1
             // 
+            textBox1.Enabled = false;
             textBox1.Location = new Point(271, 53);
             textBox1.Margin = new Padding(4, 2, 4, 2);
             textBox1.Name = "textBox1";
@@ -421,6 +422,14 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Authors";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(7, 467);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(765, 292);
+            listBox1.TabIndex = 9;
             // 
             // button16
             // 
@@ -882,14 +891,6 @@
             label19.Name = "label19";
             label19.Size = new Size(0, 32);
             label19.TabIndex = 0;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(7, 467);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(765, 292);
-            listBox1.TabIndex = 9;
             // 
             // BookManagement
             // 
