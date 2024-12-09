@@ -749,7 +749,8 @@ namespace BookCollection
         {
             try
             {
-                string query = "DELETE FROM BookAuthors; DELETE FROM CollectionBooks; DELETE FROM Collections; DELETE FROM Books; DELETE FROM Authors;";
+                string query = "DELETE FROM BookAuthors; DELETE FROM CollectionBooks; DELETE FROM Collections ;DBCC CHECKIDENT ('Collections', RESEED, 0); " +
+                    "DELETE FROM Books; DBCC CHECKIDENT ('Books', RESEED, 0); DELETE FROM Authors; DBCC CHECKIDENT ('Authors', RESEED, 0);";
 
 
                 using (SqlConnection connection = new SqlConnection(databaseConnectionString))
