@@ -159,7 +159,7 @@
             // resetDatabaseToolStripMenuItem
             // 
             resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
-            resetDatabaseToolStripMenuItem.Size = new Size(153, 22);
+            resetDatabaseToolStripMenuItem.Size = new Size(309, 44);
             resetDatabaseToolStripMenuItem.Text = "Reset Database";
             resetDatabaseToolStripMenuItem.Click += resetDatabaseToolStripMenuItem_Click;
             // 
@@ -379,8 +379,9 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(146, 25);
-            textBox1.Margin = new Padding(2, 1, 2, 1);
+            textBox1.Enabled = false;
+            textBox1.Location = new Point(271, 53);
+            textBox1.Margin = new Padding(4, 2, 4, 2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(189, 23);
             textBox1.TabIndex = 2;
@@ -428,11 +429,9 @@
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(4, 219);
-            listBox1.Margin = new Padding(2, 1, 2, 1);
+            listBox1.Location = new Point(7, 467);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(414, 139);
+            listBox1.Size = new Size(765, 292);
             listBox1.TabIndex = 9;
             // 
             // button16

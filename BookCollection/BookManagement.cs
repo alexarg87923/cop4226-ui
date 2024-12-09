@@ -25,6 +25,8 @@ namespace BookCollection
         List<CollectionBook> collectionBooksList = new List<CollectionBook>();
         List<BookAuthor> collectionBookAuthors = new List<BookAuthor>();
 
+        bool newBookToggle = false;
+
         public BookManagement()
         {
             InitializeComponent();
@@ -61,8 +63,8 @@ namespace BookCollection
             textBox5.Text = books[current_book_index].Genre;
             textBox6.Text = books[current_book_index].PublicationDate.ToString();
 
-            Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
             Authors.DisplayMember = "Name";
+            Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
             Authors.SelectionMode = SelectionMode.MultiExtended;
         }
 
@@ -72,13 +74,14 @@ namespace BookCollection
             textBox10.Text = authorList[current_author_index].Name.ToString();
             textBox11.Text = authorList[current_author_index].BirthDate.ToString();
 
-            listBox1.DataSource = collectionBookAuthors.Where(each => each.AuthorId == authorList[current_author_index].AuthorId).Join(books, bookColl => bookColl.BookId, bookitem => bookitem.BookId, (bookColl, bookitem) => bookitem).ToList();
             listBox1.DisplayMember = "Title";
-            Authors.SelectionMode = SelectionMode.None;
+            listBox1.DataSource = collectionBookAuthors.Where(each => each.AuthorId == authorList[current_author_index].AuthorId).Join(books, bookColl => bookColl.BookId, bookitem => bookitem.BookId, (bookColl, bookitem) => bookitem).ToList();
+            listBox1.SelectionMode = SelectionMode.None;
         }
 
         private void UpdateAuthorListInBooksComponent(List<int> author_ids)
         {
+            Authors.DisplayMember = "Name";
             Authors.DataSource = author_ids.Join(authorList, authorId => authorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
         }
 
@@ -393,10 +396,19 @@ namespace BookCollection
                 {
                     Title = textBox2.Text,
                     ISBN = textBox4.Text,
-                    Genre = textBox5.Text
+                    Genre = textBox5.Text,
+                    PublicationDate = DateTime.Parse(textBox6.Text)
                 };
 
-                books.Add(book);
+                if (newBookToggle)
+                {
+                    book.Add();
+                    books.Add(book);
+                } else
+                {
+                    book.Update();
+                }
+
                 LoadBookComponents();
                 MessageBox.Show("Book saved successfully!");
             }
@@ -417,8 +429,10 @@ namespace BookCollection
                     Book book = new Book { BookId = bookId };
                     book.Delete();
 
+                    books.Remove(books.First(book => book.BookId == bookId));
 
                     ClearBookForm();
+                    LoadBookComponents();
                     MessageBox.Show("Book deleted successfully!");
                 }
                 else
@@ -432,7 +446,7 @@ namespace BookCollection
             }
         }
 
-
+       
         private void ClearBookForm()
         {
             textBox1.Text = "";
@@ -440,6 +454,9 @@ namespace BookCollection
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
+
+            Authors.DataSource = null;
+            Authors.Refresh();
         }
 
         private void SaveAuthor_Click(object sender, EventArgs e)
@@ -751,6 +768,7 @@ namespace BookCollection
                 }
 
                 reset_data();
+                InitializeComponent();
 
                 MessageBox.Show("Database reset successfully!");
             }
@@ -788,6 +806,8 @@ namespace BookCollection
 
         private void BookPrev(object sender, EventArgs e)
         {
+            if (current_book_index == -1) return;
+
             if (current_book_index == 0)
             {
                 current_book_index = books.Count - 1;
@@ -801,6 +821,8 @@ namespace BookCollection
 
         private void BookNext(object sender, EventArgs e)
         {
+            if (current_book_index == -1) return;
+
             if (current_book_index == books.Count - 1)
             {
                 current_book_index = 0;
@@ -814,11 +836,26 @@ namespace BookCollection
 
         private void NewBook(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
+            if (newBookToggle)
+            {
+                current_book_index = 0;
+                newBookToggle = false;
+                button13.Text = "New Book";
+                button2.Enabled = true;
+                button11.Enabled = true;
+                button12.Enabled = true;
+                LoadBookComponents();
+                return;
+            }
+
+            ClearBookForm();
+
+            newBookToggle = true;
+            button13.Text = "Cancel";
+            button2.Enabled = false;
+            button11.Enabled = false;
+            button12.Enabled = false;
+            current_book_index = -1;
         }
 
         private void NewAuthor(object sender, EventArgs e)
