@@ -57,9 +57,9 @@ namespace BookCollection
             textBox4.Text = books[current_book_index].ISBN;
             textBox5.Text = books[current_book_index].Genre;
             textBox6.Text = books[current_book_index].PublicationDate.ToString();
-            
-            Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
+
             Authors.DisplayMember = "Name";
+            Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
             Authors.SelectionMode = SelectionMode.MultiExtended;
         }
 
@@ -69,9 +69,9 @@ namespace BookCollection
             textBox10.Text = authorList[current_author_index].Name.ToString();
             textBox11.Text = authorList[current_author_index].BirthDate.ToString();
 
-            listBox1.DataSource = collectionBookAuthors.Where(each => each.AuthorId == authorList[current_author_index].AuthorId).Join(books, bookColl => bookColl.BookId, bookitem => bookitem.BookId, (bookColl, bookitem) => bookitem).ToList();
             listBox1.DisplayMember = "Title";
-            Authors.SelectionMode = SelectionMode.None;
+            listBox1.DataSource = collectionBookAuthors.Where(each => each.AuthorId == authorList[current_author_index].AuthorId).Join(books, bookColl => bookColl.BookId, bookitem => bookitem.BookId, (bookColl, bookitem) => bookitem).ToList();
+            listBox1.SelectionMode = SelectionMode.None;
         }
 
         private void UpdateAuthorListInBooksComponent(List<int> author_ids)
@@ -429,7 +429,6 @@ namespace BookCollection
             }
         }
 
-
        
         private void ClearBookForm()
         {
@@ -440,8 +439,7 @@ namespace BookCollection
             textBox6.Text = "";
 
             Authors.DataSource = null;
-            Authors.Items.Clear();
-            Authors.DataSource = null;
+            Authors.Refresh();
         }
 
         private void SaveAuthor_Click(object sender, EventArgs e)
