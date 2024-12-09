@@ -37,6 +37,7 @@ namespace BookCollection
             InitializeDatabase();
             InitializeData();
             LoadBookComponents();
+            LoadAuthorComponents();
         }
 
         private void LoadBookComponents()
