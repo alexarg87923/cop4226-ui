@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using BookCollection.Items;
 using BookCollectionDB;
 using Microsoft.Data.SqlClient;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookCollection
 {
@@ -20,6 +21,7 @@ namespace BookCollection
         List<Collection> collectionList = new List<Collection>();
         int current_collection_index = 0;
         List<CollectionBook> collectionBooksList = new List<CollectionBook>();
+        List<BookAuthor> collectionBookAuthors = new List<BookAuthor>();
 
         public BookManagement()
         {
@@ -47,6 +49,10 @@ namespace BookCollection
             textBox4.Text = books[current_book_index].ISBN;
             textBox5.Text = books[current_book_index].Genre;
             textBox6.Text = books[current_book_index].PublicationDate.ToString();
+            
+            Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author);
+            Authors.DisplayMember = "Name";
+            Authors.SelectionMode = SelectionMode.MultiExtended;
 
             button1.Enabled = false;
         }
@@ -60,10 +66,17 @@ namespace BookCollection
 
         private void InitializeData()
         {
+            books.Clear();
+            authorList.Clear();
+            collectionList.Clear();
+            collectionBooksList.Clear();
+            collectionBookAuthors.Clear();
+
             string book_query = $"SELECT * FROM Books";
             string author_query = $"SELECT * FROM Authors";
             string collections_query = $"SELECT * FROM Collections";
             string collection_books_query = $"SELECT * FROM CollectionBooks";
+            string book_authors_query = $"SELECT * FROM BookAuthors";
 
             using (SqlConnection connection = new SqlConnection(databaseConnectionString))
             {
@@ -126,6 +139,18 @@ namespace BookCollection
                             tmpCollectionBook.CollectionId = reader.GetInt32(0);
                             tmpCollectionBook.BookId = reader.GetInt32(1);
                             collectionBooksList.Add(tmpCollectionBook);
+                        }
+                    }
+
+                    SqlCommand book_authors_command = new SqlCommand(book_authors_query, connection);
+                    using (SqlDataReader reader = book_authors_command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            BookAuthor tmpBookAuthor = new BookAuthor();
+                            tmpBookAuthor.AuthorId = reader.GetInt32(0);
+                            tmpBookAuthor.BookId = reader.GetInt32(1);
+                            collectionBookAuthors.Add(tmpBookAuthor);
                         }
                     }
                 }
@@ -354,6 +379,7 @@ namespace BookCollection
                 };
 
                 book.Add();
+                InitializeData();
                 MessageBox.Show("Book saved successfully!");
             }
             catch (Exception ex)
@@ -411,8 +437,8 @@ namespace BookCollection
                 {
                     AuthorId = string.IsNullOrWhiteSpace(textBox9.Text) ? 0 : int.Parse(textBox9.Text),
                     Name = textBox10.Text,
-                    BirthDate = DateTime.TryParse(textBox11.Text, out DateTime birthDate) ? birthDate : null,
-                    Biography = textBox7.Text
+                    BirthDate = DateTime.TryParse(textBox11.Text, out DateTime birthDate) ? birthDate : null
+                    //Biography = textBox7.Text
                 };
 
 
@@ -427,6 +453,7 @@ namespace BookCollection
                     MessageBox.Show("Author updated successfully!");
                 }
 
+                InitializeData();
 
                 ClearAuthorForm();
             }
@@ -442,7 +469,7 @@ namespace BookCollection
             textBox9.Text = "";
             textBox10.Text = "";
             textBox11.Text = "";
-            textBox7.Text = "";
+            //textBox7.Text = "";
         }
 
         private void DeleteAuthor_Click(object sender, EventArgs e)
@@ -500,7 +527,7 @@ namespace BookCollection
                     MessageBox.Show("Collection updated successfully!");
                 }
 
-
+                InitializeData();
                 ClearCollectionForm();
                 PopulateCollectionsOverview();
             }
