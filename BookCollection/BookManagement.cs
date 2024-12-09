@@ -1,5 +1,6 @@
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using BookCollection.Items;
 using BookCollectionDB;
 using Microsoft.Data.SqlClient;
@@ -64,6 +65,10 @@ namespace BookCollection
             textBox9.Text = authorList[current_author_index].AuthorId.ToString();
             textBox10.Text = authorList[current_author_index].Name.ToString();
             textBox11.Text = authorList[current_author_index].BirthDate.ToString();
+
+            listBox1.DataSource = collectionBookAuthors.Where(each => each.AuthorId == authorList[current_author_index].AuthorId).Join(books, bookColl => bookColl.BookId, book => book.BookId, (bookColl, book) => books).ToList()
+            listBox1.DisplayMember = "Title";
+            Authors.SelectionMode = SelectionMode.None;
         }
 
         private void UpdateAuthorListInBooksComponent(List<int> author_ids)
