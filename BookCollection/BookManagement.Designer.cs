@@ -61,7 +61,6 @@
             button14 = new Button();
             button4 = new Button();
             button3 = new Button();
-            textBox7 = new TextBox();
             label13 = new Label();
             label9 = new Label();
             groupBox3 = new GroupBox();
@@ -94,18 +93,15 @@
             SAuthor = new DataGridViewTextBoxColumn();
             SISBN = new DataGridViewTextBoxColumn();
             SOwner = new DataGridViewTextBoxColumn();
-            button10 = new Button();
-            button9 = new Button();
             groupBox5 = new GroupBox();
             dataGridView1 = new DataGridView();
             FTitle = new DataGridViewTextBoxColumn();
             FAuthor = new DataGridViewTextBoxColumn();
             FISBN = new DataGridViewTextBoxColumn();
             FOwner = new DataGridViewTextBoxColumn();
-            button8 = new Button();
-            button7 = new Button();
             label20 = new Label();
             label19 = new Label();
+            listBox1 = new ListBox();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -162,7 +158,7 @@
             // resetDatabaseToolStripMenuItem
             // 
             resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
-            resetDatabaseToolStripMenuItem.Size = new Size(309, 44);
+            resetDatabaseToolStripMenuItem.Size = new Size(359, 44);
             resetDatabaseToolStripMenuItem.Text = "Reset Database";
             resetDatabaseToolStripMenuItem.Click += resetDatabaseToolStripMenuItem_Click;
             // 
@@ -408,12 +404,12 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(listBox1);
             tabPage2.Controls.Add(button16);
             tabPage2.Controls.Add(button15);
             tabPage2.Controls.Add(button14);
             tabPage2.Controls.Add(button4);
             tabPage2.Controls.Add(button3);
-            tabPage2.Controls.Add(textBox7);
             tabPage2.Controls.Add(label13);
             tabPage2.Controls.Add(label9);
             tabPage2.Controls.Add(groupBox3);
@@ -478,15 +474,6 @@
             button3.TabIndex = 4;
             button3.Text = "Save Author";
             button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(7, 465);
-            textBox7.Margin = new Padding(4, 2, 4, 2);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(765, 230);
-            textBox7.TabIndex = 3;
             // 
             // label13
             // 
@@ -769,8 +756,6 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(dataGridView2);
-            groupBox6.Controls.Add(button10);
-            groupBox6.Controls.Add(button9);
             groupBox6.Location = new Point(7, 514);
             groupBox6.Margin = new Padding(4, 2, 4, 2);
             groupBox6.Name = "groupBox6";
@@ -823,31 +808,9 @@
             SOwner.ReadOnly = true;
             SOwner.Width = 200;
             // 
-            // button10
-            // 
-            button10.Location = new Point(598, 47);
-            button10.Margin = new Padding(4, 2, 4, 2);
-            button10.Name = "button10";
-            button10.Size = new Size(150, 47);
-            button10.TabIndex = 3;
-            button10.Text = "Delete Book";
-            button10.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            button9.Location = new Point(403, 47);
-            button9.Margin = new Padding(4, 2, 4, 2);
-            button9.Name = "button9";
-            button9.Size = new Size(150, 47);
-            button9.TabIndex = 3;
-            button9.Text = "Add Book";
-            button9.UseVisualStyleBackColor = true;
-            // 
             // groupBox5
             // 
             groupBox5.Controls.Add(dataGridView1);
-            groupBox5.Controls.Add(button8);
-            groupBox5.Controls.Add(button7);
             groupBox5.Location = new Point(7, 105);
             groupBox5.Margin = new Padding(4, 2, 4, 2);
             groupBox5.Name = "groupBox5";
@@ -900,26 +863,6 @@
             FOwner.ReadOnly = true;
             FOwner.Width = 200;
             // 
-            // button8
-            // 
-            button8.Location = new Point(598, 38);
-            button8.Margin = new Padding(4, 2, 4, 2);
-            button8.Name = "button8";
-            button8.Size = new Size(150, 47);
-            button8.TabIndex = 1;
-            button8.Text = "Delete Book";
-            button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            button7.Location = new Point(403, 38);
-            button7.Margin = new Padding(4, 2, 4, 2);
-            button7.Name = "button7";
-            button7.Size = new Size(150, 47);
-            button7.TabIndex = 0;
-            button7.Text = "Add Book";
-            button7.UseVisualStyleBackColor = true;
-            // 
             // label20
             // 
             label20.AutoSize = true;
@@ -939,6 +882,14 @@
             label19.Name = "label19";
             label19.Size = new Size(0, 32);
             label19.TabIndex = 0;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(7, 467);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(765, 292);
+            listBox1.TabIndex = 9;
             // 
             // BookManagement
             // 
@@ -1010,7 +961,6 @@
         private Label label13;
         private Label label12;
         private Label label11;
-        private TextBox textBox7;
         private Button button4;
         private Button button3;
         private TextBox textBox11;
@@ -1032,11 +982,7 @@
         private GroupBox groupBox5;
         private Label label20;
         private Label label19;
-        private Button button8;
-        private Button button7;
         private DataGridView dataGridView1;
-        private Button button10;
-        private Button button9;
         private DataGridView dataGridView2;
         private DataGridViewTextBoxColumn STitle;
         private DataGridViewTextBoxColumn SAuthor;
@@ -1058,5 +1004,6 @@
         private Button button18;
         private Button button17;
         private Button button20;
+        private ListBox listBox1;
     }
 }
