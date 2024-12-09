@@ -848,11 +848,7 @@ namespace BookCollection
                 return;
             }
 
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
+            ClearBookForm();
 
             newBookToggle = true;
             button13.Text = "Cancel";
