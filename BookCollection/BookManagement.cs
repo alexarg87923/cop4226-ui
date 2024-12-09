@@ -174,8 +174,8 @@ namespace BookCollection
                         while (reader.Read())
                         {
                             BookAuthor tmpBookAuthor = new BookAuthor();
-                            tmpBookAuthor.AuthorId = reader.GetInt32(0);
-                            tmpBookAuthor.BookId = reader.GetInt32(1);
+                            tmpBookAuthor.BookId = reader.GetInt32(0);
+                            tmpBookAuthor.AuthorId = reader.GetInt32(1);
                             collectionBookAuthors.Add(tmpBookAuthor);
                         }
                     }
