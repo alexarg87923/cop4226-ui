@@ -397,9 +397,20 @@ namespace BookCollection
                     PublicationDate = DateTime.Parse(textBox6.Text)
                 };
 
-                var curr_authors = collectionBookAuthors.Where(bookAuthor => bookAuthor.BookId == books[current_book_index].BookId).ToList();
+                if (newBookToggle)
+                {
+                    book.Add();
+                    books.Add(book);
+                } else
+                {
+                    book.Update();
+                }
 
-                if (curr_authors.Any() )
+                var bookId = (current_book_index == -1) ? book.BookId : books[current_book_index].BookId;
+
+                var curr_authors = collectionBookAuthors.Where(bookAuthor => bookAuthor.BookId == bookId).ToList();
+
+                if (curr_authors.Any())
                 {
                     foreach (var author in curr_authors)
                     {
@@ -413,19 +424,11 @@ namespace BookCollection
                                                           let tmpBookAuthor = new BookAuthor()
                                                           select (authorid, tmpBookAuthor))
                 {
-                    tmpBookAuthor.BookId = books[current_book_index].BookId;
+                    tmpBookAuthor.BookId = bookId;
                     tmpBookAuthor.AuthorId = authorid;
                     tmpBookAuthor.Link();
                 }
 
-                if (newBookToggle)
-                {
-                    book.Add();
-                    books.Add(book);
-                } else
-                {
-                    book.Update();
-                }
 
                 LoadBookComponents();
                 MessageBox.Show("Book saved successfully!");
