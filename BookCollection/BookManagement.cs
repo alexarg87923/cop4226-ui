@@ -59,6 +59,8 @@ namespace BookCollection
 
         private void LoadBookComponents()
         {
+            Authors.DataSource = null;
+
             textBox1.Text = books[current_book_index].BookId.ToString();
             textBox2.Text = books[current_book_index].Title;
             textBox4.Text = books[current_book_index].ISBN;
@@ -68,6 +70,7 @@ namespace BookCollection
             Authors.DisplayMember = "Name";
             Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
             Authors.SelectionMode = SelectionMode.None;
+            Authors.Refresh();
         }
 
         private void LoadAuthorComponents()
