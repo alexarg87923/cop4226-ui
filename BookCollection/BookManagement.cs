@@ -57,8 +57,6 @@ namespace BookCollection
             Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
             Authors.DisplayMember = "Name";
             Authors.SelectionMode = SelectionMode.MultiExtended;
-
-            button1.Enabled = false;
         }
 
         private void LoadAuthorComponents()
@@ -830,8 +828,6 @@ namespace BookCollection
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
-
-            button1.Enabled = true;
         }
 
         private void NewAuthor(object sender, EventArgs e)
@@ -897,8 +893,6 @@ namespace BookCollection
             textBox13.Text = "";  
             textBox12.Text = "";  
             textBox8.Text = "";   
-
-            button6.Enabled = true;  
         }
     }
 
