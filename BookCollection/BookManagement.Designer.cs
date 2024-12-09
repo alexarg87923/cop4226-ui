@@ -427,10 +427,10 @@
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(13, 996);
-            listBox1.Margin = new Padding(6, 6, 6, 6);
+            listBox1.Location = new Point(10, 471);
+            listBox1.Margin = new Padding(6);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(1417, 612);
+            listBox1.Size = new Size(762, 228);
             listBox1.TabIndex = 9;
             // 
             // button16
