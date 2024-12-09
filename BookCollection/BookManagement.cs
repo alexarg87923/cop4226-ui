@@ -67,7 +67,7 @@ namespace BookCollection
 
             Authors.DisplayMember = "Name";
             Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
-            Authors.SelectionMode = SelectionMode.MultiExtended;
+            Authors.SelectionMode = SelectionMode.None;
         }
 
         private void LoadAuthorComponents()
@@ -433,6 +433,7 @@ namespace BookCollection
                     tmpBookAuthor.Link();
                 }
 
+                InitializeData();
                 LoadBookComponents();
                 MessageBox.Show("Book saved successfully!");
             }
