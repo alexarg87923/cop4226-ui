@@ -424,7 +424,7 @@ namespace BookCollection
                 }
 
 
-                var authorList = Authors.Items.Cast<Author>().ToList();
+                var authorList = Authors.DataSource as List<Author>;
                 foreach (var author in authorList)
                 {
                     BookAuthor tmpBookAuthor = new BookAuthor();
