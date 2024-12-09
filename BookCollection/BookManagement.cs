@@ -424,16 +424,14 @@ namespace BookCollection
                 }
 
 
-                var authorList = Authors.DataSource as BindingList<int>;
-                foreach (var (authorid, tmpBookAuthor) in from authorid in authorList
-                                                          let tmpBookAuthor = new BookAuthor()
-                                                          select (authorid, tmpBookAuthor))
+                var authorList = Authors.Items.Cast<Author>().ToList();
+                foreach (var author in authorList)
                 {
+                    BookAuthor tmpBookAuthor = new BookAuthor();
                     tmpBookAuthor.BookId = bookId;
-                    tmpBookAuthor.AuthorId = authorid;
+                    tmpBookAuthor.AuthorId = author.AuthorId;
                     tmpBookAuthor.Link();
                 }
-
 
                 LoadBookComponents();
                 MessageBox.Show("Book saved successfully!");
