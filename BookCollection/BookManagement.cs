@@ -437,6 +437,8 @@ namespace BookCollection
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
+
+            Authors.Items.Clear();
         }
 
         private void SaveAuthor_Click(object sender, EventArgs e)
