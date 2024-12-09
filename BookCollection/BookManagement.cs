@@ -794,7 +794,10 @@ namespace BookCollection
                 }
 
                 reset_data();
-                InitializeComponent();
+                InitializeData();
+                LoadBookComponents();
+                LoadAuthorComponents();
+                LoadCollectionComponents();
 
                 MessageBox.Show("Database reset successfully!");
             }
