@@ -782,6 +782,7 @@ namespace BookCollection
                 }
 
                 reset_data();
+                InitializeComponent();
 
                 MessageBox.Show("Database reset successfully!");
             }
