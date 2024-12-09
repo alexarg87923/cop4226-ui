@@ -59,8 +59,6 @@ namespace BookCollection
 
         private void LoadBookComponents()
         {
-            Authors.DataSource = null;
-
             textBox1.Text = books[current_book_index].BookId.ToString();
             textBox2.Text = books[current_book_index].Title;
             textBox4.Text = books[current_book_index].ISBN;
