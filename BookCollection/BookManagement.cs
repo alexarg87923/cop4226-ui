@@ -884,8 +884,8 @@ namespace BookCollection
             textBox10.Text = "";
             textBox11.Text = "";
 
-            Authors.DataSource = null;
-            Authors.Refresh();
+            listBox1.DataSource = null;
+            listBox1.Refresh();
         }
 
         private void NewAuthor(object sender, EventArgs e)
