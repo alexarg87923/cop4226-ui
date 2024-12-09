@@ -56,6 +56,7 @@
             label4 = new Label();
             label3 = new Label();
             tabPage2 = new TabPage();
+            listBox1 = new ListBox();
             button16 = new Button();
             button15 = new Button();
             button14 = new Button();
@@ -101,7 +102,6 @@
             FOwner = new DataGridViewTextBoxColumn();
             label20 = new Label();
             label19 = new Label();
-            listBox1 = new ListBox();
             menuStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -122,20 +122,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(6, 15);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(3, 7);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(290, 45);
+            label1.Size = new Size(141, 21);
             label1.TabIndex = 0;
             label1.Text = "Book Management";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(28, 77);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(15, 36);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(0, 32);
+            label2.Size = new Size(0, 15);
             label2.TabIndex = 1;
             // 
             // menuStrip1
@@ -144,7 +144,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(955, 40);
+            menuStrip1.Padding = new Padding(3, 1, 0, 1);
+            menuStrip1.Size = new Size(514, 24);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -152,13 +153,13 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { resetDatabaseToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(132, 36);
+            fileToolStripMenuItem.Size = new Size(67, 22);
             fileToolStripMenuItem.Text = "Database";
             // 
             // resetDatabaseToolStripMenuItem
             // 
             resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
-            resetDatabaseToolStripMenuItem.Size = new Size(359, 44);
+            resetDatabaseToolStripMenuItem.Size = new Size(153, 22);
             resetDatabaseToolStripMenuItem.Text = "Reset Database";
             resetDatabaseToolStripMenuItem.Click += resetDatabaseToolStripMenuItem_Click;
             // 
@@ -168,11 +169,11 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
-            tabControl1.Location = new Point(0, 68);
-            tabControl1.Margin = new Padding(4, 2, 4, 2);
+            tabControl1.Location = new Point(0, 32);
+            tabControl1.Margin = new Padding(2, 1, 2, 1);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(858, 1094);
+            tabControl1.Size = new Size(462, 513);
             tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -189,21 +190,21 @@
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(label1);
-            tabPage1.Location = new Point(8, 46);
-            tabPage1.Margin = new Padding(4, 2, 4, 2);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Margin = new Padding(2, 1, 2, 1);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(4, 2, 4, 2);
-            tabPage1.Size = new Size(842, 1040);
+            tabPage1.Padding = new Padding(2, 1, 2, 1);
+            tabPage1.Size = new Size(454, 485);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Books";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // button20
             // 
-            button20.Location = new Point(158, 639);
-            button20.Margin = new Padding(4, 2, 4, 2);
+            button20.Location = new Point(85, 300);
+            button20.Margin = new Padding(2, 1, 2, 1);
             button20.Name = "button20";
-            button20.Size = new Size(173, 47);
+            button20.Size = new Size(93, 22);
             button20.TabIndex = 11;
             button20.Text = "Select";
             button20.UseVisualStyleBackColor = true;
@@ -211,10 +212,10 @@
             // 
             // button13
             // 
-            button13.Location = new Point(28, 934);
-            button13.Margin = new Padding(4, 2, 4, 2);
+            button13.Location = new Point(15, 438);
+            button13.Margin = new Padding(2, 1, 2, 1);
             button13.Name = "button13";
-            button13.Size = new Size(173, 47);
+            button13.Size = new Size(93, 22);
             button13.TabIndex = 10;
             button13.Text = "New Book";
             button13.UseVisualStyleBackColor = true;
@@ -222,10 +223,10 @@
             // 
             // button11
             // 
-            button11.Location = new Point(339, 18);
-            button11.Margin = new Padding(4, 2, 4, 2);
+            button11.Location = new Point(183, 8);
+            button11.Margin = new Padding(2, 1, 2, 1);
             button11.Name = "button11";
-            button11.Size = new Size(173, 47);
+            button11.Size = new Size(93, 22);
             button11.TabIndex = 9;
             button11.Text = "Prev";
             button11.UseVisualStyleBackColor = true;
@@ -233,10 +234,10 @@
             // 
             // button12
             // 
-            button12.Location = new Point(544, 18);
-            button12.Margin = new Padding(4, 2, 4, 2);
+            button12.Location = new Point(293, 8);
+            button12.Margin = new Padding(2, 1, 2, 1);
             button12.Name = "button12";
-            button12.Size = new Size(173, 47);
+            button12.Size = new Size(93, 22);
             button12.TabIndex = 8;
             button12.Text = "Next";
             button12.UseVisualStyleBackColor = true;
@@ -245,37 +246,39 @@
             // Authors
             // 
             Authors.FormattingEnabled = true;
-            Authors.Location = new Point(28, 696);
+            Authors.ItemHeight = 15;
+            Authors.Location = new Point(15, 326);
+            Authors.Margin = new Padding(2, 1, 2, 1);
             Authors.Name = "Authors";
-            Authors.Size = new Size(689, 196);
+            Authors.Size = new Size(373, 94);
             Authors.TabIndex = 6;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(28, 646);
-            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Location = new Point(15, 303);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(97, 32);
+            label8.Size = new Size(49, 15);
             label8.TabIndex = 3;
             label8.Text = "Authors";
             // 
             // button2
             // 
-            button2.Location = new Point(474, 934);
-            button2.Margin = new Padding(4, 2, 4, 2);
+            button2.Location = new Point(255, 438);
+            button2.Margin = new Padding(2, 1, 2, 1);
             button2.Name = "button2";
-            button2.Size = new Size(173, 47);
+            button2.Size = new Size(93, 22);
             button2.TabIndex = 5;
             button2.Text = "Delete Book";
             button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(236, 934);
-            button1.Margin = new Padding(4, 2, 4, 2);
+            button1.Location = new Point(127, 438);
+            button1.Margin = new Padding(2, 1, 2, 1);
             button1.Name = "button1";
-            button1.Size = new Size(173, 47);
+            button1.Size = new Size(93, 22);
             button1.TabIndex = 4;
             button1.Text = "Save Book";
             button1.UseVisualStyleBackColor = true;
@@ -288,66 +291,66 @@
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label5);
-            groupBox2.Location = new Point(28, 322);
-            groupBox2.Margin = new Padding(4, 2, 4, 2);
+            groupBox2.Location = new Point(15, 151);
+            groupBox2.Margin = new Padding(2, 1, 2, 1);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4, 2, 4, 2);
-            groupBox2.Size = new Size(689, 292);
+            groupBox2.Padding = new Padding(2, 1, 2, 1);
+            groupBox2.Size = new Size(371, 137);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Book Properties";
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(271, 220);
-            textBox6.Margin = new Padding(4, 2, 4, 2);
+            textBox6.Location = new Point(146, 103);
+            textBox6.Margin = new Padding(2, 1, 2, 1);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(348, 39);
+            textBox6.Size = new Size(189, 23);
             textBox6.TabIndex = 5;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(271, 145);
-            textBox5.Margin = new Padding(4, 2, 4, 2);
+            textBox5.Location = new Point(146, 68);
+            textBox5.Margin = new Padding(2, 1, 2, 1);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(348, 39);
+            textBox5.Size = new Size(189, 23);
             textBox5.TabIndex = 4;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(271, 70);
-            textBox4.Margin = new Padding(4, 2, 4, 2);
+            textBox4.Location = new Point(146, 33);
+            textBox4.Margin = new Padding(2, 1, 2, 1);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(348, 39);
+            textBox4.Size = new Size(189, 23);
             textBox4.TabIndex = 3;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(6, 220);
-            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Location = new Point(3, 103);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(194, 32);
+            label7.Size = new Size(97, 15);
             label7.TabIndex = 2;
             label7.Text = "Publication Date:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(117, 145);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(63, 68);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(83, 32);
+            label6.Size = new Size(41, 15);
             label6.TabIndex = 1;
             label6.Text = "Genre:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(130, 73);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(70, 34);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(70, 32);
+            label5.Size = new Size(35, 15);
             label5.TabIndex = 0;
             label5.Text = "ISBN:";
             // 
@@ -357,48 +360,48 @@
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(28, 77);
-            groupBox1.Margin = new Padding(4, 2, 4, 2);
+            groupBox1.Location = new Point(15, 36);
+            groupBox1.Margin = new Padding(2, 1, 2, 1);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 2, 4, 2);
-            groupBox1.Size = new Size(689, 211);
+            groupBox1.Padding = new Padding(2, 1, 2, 1);
+            groupBox1.Size = new Size(371, 99);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Base Properties";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(271, 134);
-            textBox2.Margin = new Padding(4, 2, 4, 2);
+            textBox2.Location = new Point(146, 63);
+            textBox2.Margin = new Padding(2, 1, 2, 1);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(348, 39);
+            textBox2.Size = new Size(189, 23);
             textBox2.TabIndex = 3;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(271, 53);
-            textBox1.Margin = new Padding(4, 2, 4, 2);
+            textBox1.Location = new Point(146, 25);
+            textBox1.Margin = new Padding(2, 1, 2, 1);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(348, 39);
+            textBox1.Size = new Size(189, 23);
             textBox1.TabIndex = 2;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(135, 134);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(73, 63);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(65, 32);
+            label4.Size = new Size(32, 15);
             label4.TabIndex = 1;
             label4.Text = "Title:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(158, 53);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(85, 25);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(42, 32);
+            label3.Size = new Size(21, 15);
             label3.TabIndex = 0;
             label3.Text = "ID:";
             // 
@@ -413,21 +416,31 @@
             tabPage2.Controls.Add(label13);
             tabPage2.Controls.Add(label9);
             tabPage2.Controls.Add(groupBox3);
-            tabPage2.Location = new Point(8, 46);
-            tabPage2.Margin = new Padding(4, 2, 4, 2);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Margin = new Padding(2, 1, 2, 1);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(4, 2, 4, 2);
-            tabPage2.Size = new Size(842, 1040);
+            tabPage2.Padding = new Padding(2, 1, 2, 1);
+            tabPage2.Size = new Size(454, 485);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Authors";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(4, 219);
+            listBox1.Margin = new Padding(2, 1, 2, 1);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(414, 139);
+            listBox1.TabIndex = 9;
+            // 
             // button16
             // 
-            button16.Location = new Point(587, 26);
-            button16.Margin = new Padding(4, 2, 4, 2);
+            button16.Location = new Point(316, 12);
+            button16.Margin = new Padding(2, 1, 2, 1);
             button16.Name = "button16";
-            button16.Size = new Size(206, 47);
+            button16.Size = new Size(111, 22);
             button16.TabIndex = 8;
             button16.Text = "Next";
             button16.UseVisualStyleBackColor = true;
@@ -435,10 +448,10 @@
             // 
             // button15
             // 
-            button15.Location = new Point(359, 26);
-            button15.Margin = new Padding(4, 2, 4, 2);
+            button15.Location = new Point(193, 12);
+            button15.Margin = new Padding(2, 1, 2, 1);
             button15.Name = "button15";
-            button15.Size = new Size(206, 47);
+            button15.Size = new Size(111, 22);
             button15.TabIndex = 7;
             button15.Text = "Prev";
             button15.UseVisualStyleBackColor = true;
@@ -446,10 +459,10 @@
             // 
             // button14
             // 
-            button14.Location = new Point(5, 764);
-            button14.Margin = new Padding(4, 2, 4, 2);
+            button14.Location = new Point(3, 358);
+            button14.Margin = new Padding(2, 1, 2, 1);
             button14.Name = "button14";
-            button14.Size = new Size(206, 47);
+            button14.Size = new Size(111, 22);
             button14.TabIndex = 6;
             button14.Text = "New Author";
             button14.UseVisualStyleBackColor = true;
@@ -457,20 +470,20 @@
             // 
             // button4
             // 
-            button4.Location = new Point(467, 764);
-            button4.Margin = new Padding(4, 2, 4, 2);
+            button4.Location = new Point(251, 358);
+            button4.Margin = new Padding(2, 1, 2, 1);
             button4.Name = "button4";
-            button4.Size = new Size(206, 47);
+            button4.Size = new Size(111, 22);
             button4.TabIndex = 5;
             button4.Text = "Delete Author";
             button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            button3.Location = new Point(238, 764);
-            button3.Margin = new Padding(4, 2, 4, 2);
+            button3.Location = new Point(128, 358);
+            button3.Margin = new Padding(2, 1, 2, 1);
             button3.Name = "button3";
-            button3.Size = new Size(206, 47);
+            button3.Size = new Size(111, 22);
             button3.TabIndex = 4;
             button3.Text = "Save Author";
             button3.UseVisualStyleBackColor = true;
@@ -478,10 +491,10 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(7, 412);
-            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Location = new Point(4, 193);
+            label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
-            label13.Size = new Size(174, 32);
+            label13.Size = new Size(87, 15);
             label13.TabIndex = 2;
             label13.Text = "Author's Books";
             // 
@@ -489,10 +502,10 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F);
-            label9.Location = new Point(7, 15);
-            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Location = new Point(4, 7);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(316, 45);
+            label9.Size = new Size(154, 21);
             label9.TabIndex = 1;
             label9.Text = "Author Management";
             // 
@@ -504,66 +517,66 @@
             groupBox3.Controls.Add(label12);
             groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(label10);
-            groupBox3.Location = new Point(7, 77);
-            groupBox3.Margin = new Padding(4, 2, 4, 2);
+            groupBox3.Location = new Point(4, 36);
+            groupBox3.Margin = new Padding(2, 1, 2, 1);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(4, 2, 4, 2);
-            groupBox3.Size = new Size(765, 301);
+            groupBox3.Padding = new Padding(2, 1, 2, 1);
+            groupBox3.Size = new Size(412, 141);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Author Details";
             // 
             // textBox11
             // 
-            textBox11.Location = new Point(225, 226);
-            textBox11.Margin = new Padding(4, 2, 4, 2);
+            textBox11.Location = new Point(121, 106);
+            textBox11.Margin = new Padding(2, 1, 2, 1);
             textBox11.Name = "textBox11";
-            textBox11.Size = new Size(390, 39);
+            textBox11.Size = new Size(212, 23);
             textBox11.TabIndex = 5;
             // 
             // textBox10
             // 
-            textBox10.Location = new Point(225, 151);
-            textBox10.Margin = new Padding(4, 2, 4, 2);
+            textBox10.Location = new Point(121, 71);
+            textBox10.Margin = new Padding(2, 1, 2, 1);
             textBox10.Name = "textBox10";
-            textBox10.Size = new Size(390, 39);
+            textBox10.Size = new Size(212, 23);
             textBox10.TabIndex = 4;
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(225, 68);
-            textBox9.Margin = new Padding(4, 2, 4, 2);
+            textBox9.Location = new Point(121, 32);
+            textBox9.Margin = new Padding(2, 1, 2, 1);
             textBox9.Name = "textBox9";
-            textBox9.Size = new Size(390, 39);
+            textBox9.Size = new Size(212, 23);
             textBox9.TabIndex = 3;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(28, 226);
-            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Location = new Point(15, 106);
+            label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
-            label12.Size = new Size(126, 32);
+            label12.Size = new Size(62, 15);
             label12.TabIndex = 2;
             label12.Text = "Birth Date:";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(71, 151);
-            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Location = new Point(38, 71);
+            label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(83, 32);
+            label11.Size = new Size(42, 15);
             label11.TabIndex = 1;
             label11.Text = "Name:";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(32, 68);
-            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Location = new Point(17, 32);
+            label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(122, 32);
+            label10.Size = new Size(61, 15);
             label10.TabIndex = 0;
             label10.Text = "Author ID:";
             // 
@@ -578,41 +591,41 @@
             tabPage3.Controls.Add(textBox8);
             tabPage3.Controls.Add(label18);
             tabPage3.Controls.Add(groupBox4);
-            tabPage3.Location = new Point(8, 46);
-            tabPage3.Margin = new Padding(4, 2, 4, 2);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Margin = new Padding(2, 1, 2, 1);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(4, 2, 4, 2);
-            tabPage3.Size = new Size(842, 1040);
+            tabPage3.Padding = new Padding(2, 1, 2, 1);
+            tabPage3.Size = new Size(454, 485);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Collections";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // button19
             // 
-            button19.Location = new Point(579, 26);
-            button19.Margin = new Padding(4, 2, 4, 2);
+            button19.Location = new Point(312, 12);
+            button19.Margin = new Padding(2, 1, 2, 1);
             button19.Name = "button19";
-            button19.Size = new Size(206, 47);
+            button19.Size = new Size(111, 22);
             button19.TabIndex = 14;
             button19.Text = "Next";
             button19.UseVisualStyleBackColor = true;
             // 
             // button18
             // 
-            button18.Location = new Point(365, 26);
-            button18.Margin = new Padding(4, 2, 4, 2);
+            button18.Location = new Point(197, 12);
+            button18.Margin = new Padding(2, 1, 2, 1);
             button18.Name = "button18";
-            button18.Size = new Size(206, 47);
+            button18.Size = new Size(111, 22);
             button18.TabIndex = 13;
             button18.Text = "Prev";
             button18.UseVisualStyleBackColor = true;
             // 
             // button17
             // 
-            button17.Location = new Point(8, 764);
-            button17.Margin = new Padding(4, 2, 4, 2);
+            button17.Location = new Point(4, 358);
+            button17.Margin = new Padding(2, 1, 2, 1);
             button17.Name = "button17";
-            button17.Size = new Size(206, 47);
+            button17.Size = new Size(111, 22);
             button17.TabIndex = 12;
             button17.Text = "New Collection";
             button17.UseVisualStyleBackColor = true;
@@ -621,49 +634,49 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 12F);
-            label14.Location = new Point(7, 15);
-            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Location = new Point(4, 7);
+            label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(361, 45);
+            label14.Size = new Size(175, 21);
             label14.TabIndex = 7;
             label14.Text = "Collection Management";
             // 
             // button5
             // 
-            button5.Location = new Point(503, 764);
-            button5.Margin = new Padding(4, 2, 4, 2);
+            button5.Location = new Point(271, 358);
+            button5.Margin = new Padding(2, 1, 2, 1);
             button5.Name = "button5";
-            button5.Size = new Size(206, 47);
+            button5.Size = new Size(111, 22);
             button5.TabIndex = 11;
             button5.Text = "Delete Collection";
             button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
-            button6.Location = new Point(250, 764);
-            button6.Margin = new Padding(4, 2, 4, 2);
+            button6.Location = new Point(135, 358);
+            button6.Margin = new Padding(2, 1, 2, 1);
             button6.Name = "button6";
-            button6.Size = new Size(206, 47);
+            button6.Size = new Size(111, 22);
             button6.TabIndex = 10;
             button6.Text = "Save Collection";
             button6.UseVisualStyleBackColor = true;
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(7, 465);
-            textBox8.Margin = new Padding(4, 2, 4, 2);
+            textBox8.Location = new Point(4, 218);
+            textBox8.Margin = new Padding(2, 1, 2, 1);
             textBox8.Multiline = true;
             textBox8.Name = "textBox8";
-            textBox8.Size = new Size(765, 230);
+            textBox8.Size = new Size(414, 110);
             textBox8.TabIndex = 9;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(7, 412);
-            label18.Margin = new Padding(4, 0, 4, 0);
+            label18.Location = new Point(4, 193);
+            label18.Margin = new Padding(2, 0, 2, 0);
             label18.Name = "label18";
-            label18.Size = new Size(219, 32);
+            label18.Size = new Size(109, 15);
             label18.TabIndex = 8;
             label18.Text = "Books in Collection";
             // 
@@ -675,66 +688,66 @@
             groupBox4.Controls.Add(label15);
             groupBox4.Controls.Add(label16);
             groupBox4.Controls.Add(label17);
-            groupBox4.Location = new Point(7, 77);
-            groupBox4.Margin = new Padding(4, 2, 4, 2);
+            groupBox4.Location = new Point(4, 36);
+            groupBox4.Margin = new Padding(2, 1, 2, 1);
             groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(4, 2, 4, 2);
-            groupBox4.Size = new Size(765, 301);
+            groupBox4.Padding = new Padding(2, 1, 2, 1);
+            groupBox4.Size = new Size(412, 141);
             groupBox4.TabIndex = 6;
             groupBox4.TabStop = false;
             groupBox4.Text = "Collection Details";
             // 
             // textBox12
             // 
-            textBox12.Location = new Point(243, 230);
-            textBox12.Margin = new Padding(4, 2, 4, 2);
+            textBox12.Location = new Point(131, 108);
+            textBox12.Margin = new Padding(2, 1, 2, 1);
             textBox12.Name = "textBox12";
-            textBox12.Size = new Size(264, 39);
+            textBox12.Size = new Size(144, 23);
             textBox12.TabIndex = 8;
             // 
             // textBox13
             // 
-            textBox13.Location = new Point(243, 151);
-            textBox13.Margin = new Padding(4, 2, 4, 2);
+            textBox13.Location = new Point(131, 71);
+            textBox13.Margin = new Padding(2, 1, 2, 1);
             textBox13.Name = "textBox13";
-            textBox13.Size = new Size(264, 39);
+            textBox13.Size = new Size(144, 23);
             textBox13.TabIndex = 7;
             // 
             // textBox14
             // 
-            textBox14.Location = new Point(243, 68);
-            textBox14.Margin = new Padding(4, 2, 4, 2);
+            textBox14.Location = new Point(131, 32);
+            textBox14.Margin = new Padding(2, 1, 2, 1);
             textBox14.Name = "textBox14";
-            textBox14.Size = new Size(264, 39);
+            textBox14.Size = new Size(144, 23);
             textBox14.TabIndex = 6;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(100, 230);
-            label15.Margin = new Padding(4, 0, 4, 0);
+            label15.Location = new Point(54, 108);
+            label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(89, 32);
+            label15.Size = new Size(45, 15);
             label15.TabIndex = 2;
             label15.Text = "Owner:";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(108, 151);
-            label16.Margin = new Padding(4, 0, 4, 0);
+            label16.Location = new Point(58, 71);
+            label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
-            label16.Size = new Size(83, 32);
+            label16.Size = new Size(42, 15);
             label16.TabIndex = 1;
             label16.Text = "Name:";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(33, 68);
-            label17.Margin = new Padding(4, 0, 4, 0);
+            label17.Location = new Point(18, 32);
+            label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(156, 32);
+            label17.Size = new Size(78, 15);
             label17.TabIndex = 0;
             label17.Text = "Collection ID:";
             // 
@@ -744,11 +757,11 @@
             tabPage4.Controls.Add(groupBox5);
             tabPage4.Controls.Add(label20);
             tabPage4.Controls.Add(label19);
-            tabPage4.Location = new Point(8, 46);
-            tabPage4.Margin = new Padding(4, 2, 4, 2);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Margin = new Padding(2, 1, 2, 1);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(4, 2, 4, 2);
-            tabPage4.Size = new Size(842, 1040);
+            tabPage4.Padding = new Padding(2, 1, 2, 1);
+            tabPage4.Size = new Size(454, 485);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Collections Management";
             tabPage4.UseVisualStyleBackColor = true;
@@ -756,11 +769,11 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(dataGridView2);
-            groupBox6.Location = new Point(7, 514);
-            groupBox6.Margin = new Padding(4, 2, 4, 2);
+            groupBox6.Location = new Point(4, 241);
+            groupBox6.Margin = new Padding(2, 1, 2, 1);
             groupBox6.Name = "groupBox6";
-            groupBox6.Padding = new Padding(4, 2, 4, 2);
-            groupBox6.Size = new Size(800, 331);
+            groupBox6.Padding = new Padding(2, 1, 2, 1);
+            groupBox6.Size = new Size(431, 155);
             groupBox6.TabIndex = 10;
             groupBox6.TabStop = false;
             groupBox6.Text = "Science Collection";
@@ -769,11 +782,11 @@
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { STitle, SAuthor, SISBN, SOwner });
-            dataGridView2.Location = new Point(0, 115);
-            dataGridView2.Margin = new Padding(4, 2, 4, 2);
+            dataGridView2.Location = new Point(0, 54);
+            dataGridView2.Margin = new Padding(2, 1, 2, 1);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 82;
-            dataGridView2.Size = new Size(800, 215);
+            dataGridView2.Size = new Size(431, 101);
             dataGridView2.TabIndex = 3;
             // 
             // STitle
@@ -811,11 +824,11 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(dataGridView1);
-            groupBox5.Location = new Point(7, 105);
-            groupBox5.Margin = new Padding(4, 2, 4, 2);
+            groupBox5.Location = new Point(4, 49);
+            groupBox5.Margin = new Padding(2, 1, 2, 1);
             groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(4, 2, 4, 2);
-            groupBox5.Size = new Size(800, 375);
+            groupBox5.Padding = new Padding(2, 1, 2, 1);
+            groupBox5.Size = new Size(431, 176);
             groupBox5.TabIndex = 9;
             groupBox5.TabStop = false;
             groupBox5.Text = "Fiction Collection";
@@ -824,11 +837,11 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FTitle, FAuthor, FISBN, FOwner });
-            dataGridView1.Location = new Point(0, 107);
-            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Location = new Point(0, 50);
+            dataGridView1.Margin = new Padding(2, 1, 2, 1);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(800, 269);
+            dataGridView1.Size = new Size(431, 126);
             dataGridView1.TabIndex = 2;
             // 
             // FTitle
@@ -867,10 +880,10 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 12F);
-            label20.Location = new Point(7, 15);
-            label20.Margin = new Padding(4, 0, 4, 0);
+            label20.Location = new Point(4, 7);
+            label20.Margin = new Padding(2, 0, 2, 0);
             label20.Name = "label20";
-            label20.Size = new Size(302, 45);
+            label20.Size = new Size(149, 21);
             label20.TabIndex = 8;
             label20.Text = "Collection Overview";
             // 
@@ -878,28 +891,20 @@
             // 
             label19.AutoSize = true;
             label19.Location = new Point(0, 0);
-            label19.Margin = new Padding(4, 0, 4, 0);
+            label19.Margin = new Padding(2, 0, 2, 0);
             label19.Name = "label19";
-            label19.Size = new Size(0, 32);
+            label19.Size = new Size(0, 15);
             label19.TabIndex = 0;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(7, 467);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(765, 292);
-            listBox1.TabIndex = 9;
             // 
             // BookManagement
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(955, 1292);
+            ClientSize = new Size(514, 606);
             Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(4, 2, 4, 2);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "BookManagement";
             Text = "BookManagement";
             menuStrip1.ResumeLayout(false);

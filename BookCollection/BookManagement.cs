@@ -14,6 +14,7 @@ namespace BookCollection
         private string databaseName = "BookCollectionDB";
         private string booksTableName = "Books";
         public string databaseConnectionString { get => $"Server=(localDB)\\MSSQLLocalDB;Database={databaseName};Trusted_Connection=True;"; set => databaseConnectionString = value; }
+        
 
         List<Book> books = new List<Book>();
         int current_book_index = 0;
@@ -41,10 +42,15 @@ namespace BookCollection
             button19.Click += CollectionNext;
             button17.Click += NewCollection;
 
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+
+            
+
             InitializeDatabase();
             InitializeData();
             LoadBookComponents();
             LoadAuthorComponents();
+            LoadCollectionComponents();
         }
 
         private void LoadBookComponents()
@@ -54,7 +60,7 @@ namespace BookCollection
             textBox4.Text = books[current_book_index].ISBN;
             textBox5.Text = books[current_book_index].Genre;
             textBox6.Text = books[current_book_index].PublicationDate.ToString();
-            
+
             Authors.DataSource = collectionBookAuthors.Where(each => each.BookId == books[current_book_index].BookId).Join(authorList, bookAuthor => bookAuthor.AuthorId, author => author.AuthorId, (bookAuthor, author) => author).ToList();
             Authors.DisplayMember = "Name";
             Authors.SelectionMode = SelectionMode.MultiExtended;
@@ -585,8 +591,8 @@ namespace BookCollection
             try
             {
 
-                tabPage4.Controls.Clear();
 
+                tabPage4.Controls.Clear();
 
                 List<Collection> collections = FetchCollectionsFromDatabase();
 
@@ -600,7 +606,7 @@ namespace BookCollection
                     {
                         Text = collection.Name,
                         Width = tabPage4.Width - 40,
-                        Height = 250,
+                        Height = 200,
                         Top = verticalOffset,
                         Left = 10
                     };
@@ -617,38 +623,19 @@ namespace BookCollection
                     };
 
                     // Add columns to the DataGridView
-                    dataGridView.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Title", DataPropertyName = "Title", Width = 200 });
+                    dataGridView.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Title", DataPropertyName = "Title", Width = 150 });
                     dataGridView.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Author", DataPropertyName = "Author", Width = 150 });
                     dataGridView.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "ISBN", DataPropertyName = "ISBN", Width = 150 });
 
-
-                    Button addBookButton = new Button
-                    {
-                        Text = "Add Book",
-                        Top = dataGridView.Bottom + 10,
-                        Left = 10
-                    };
-                    addBookButton.Click += (s, e) => AddBookToCollection_Click(s, e, collection.CollectionId);
-
-
-                    Button removeBookButton = new Button
-                    {
-                        Text = "Remove Book",
-                        Top = dataGridView.Bottom + 10,
-                        Left = 120
-                    };
-                    removeBookButton.Click += (s, e) => RemoveBookFromCollection_Click(s, e, collection.CollectionId);
-
+           
 
                     groupBox.Controls.Add(dataGridView);
-                    groupBox.Controls.Add(addBookButton);
-                    groupBox.Controls.Add(removeBookButton);
-
+                    
 
                     tabPage4.Controls.Add(groupBox);
 
 
-                    verticalOffset += groupBox.Height + 20;
+                    verticalOffset += groupBox.Height + 10;
                 }
             }
             catch (Exception ex)
@@ -893,10 +880,18 @@ namespace BookCollection
 
         private void NewCollection(object sender, EventArgs e)
         {
-            textBox14.Text = "";  
-            textBox13.Text = "";  
-            textBox12.Text = "";  
-            textBox8.Text = "";   
+            textBox14.Text = "";
+            textBox13.Text = "";
+            textBox12.Text = "";
+            textBox8.Text = "";
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage4) 
+            {
+                PopulateCollectionsOverview();
+            }
         }
     }
 
