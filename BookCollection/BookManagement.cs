@@ -500,11 +500,10 @@ namespace BookCollection
                     AuthorId = string.IsNullOrWhiteSpace(textBox9.Text) ? 0 : int.Parse(textBox9.Text),
                     Name = textBox10.Text,
                     BirthDate = DateTime.TryParse(textBox11.Text, out DateTime birthDate) ? birthDate : null
-                    //Biography = textBox7.Text
                 };
 
 
-                if (author.AuthorId == 0)
+                if (newAuthorToggle)
                 {
                     author.Add();
                     MessageBox.Show("Author added successfully!");
@@ -515,22 +514,13 @@ namespace BookCollection
                     MessageBox.Show("Author updated successfully!");
                 }
 
-                ClearAuthorForm();
+                clearAuthorForm();
                 LoadAuthorComponents();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error saving author: " + ex.Message);
             }
-        }
-
-
-        private void ClearAuthorForm()
-        {
-            textBox9.Text = "";
-            textBox10.Text = "";
-            textBox11.Text = "";
-            //textBox7.Text = "";
         }
 
         private void DeleteAuthor_Click(object sender, EventArgs e)
@@ -545,7 +535,7 @@ namespace BookCollection
                     author.Delete();
 
 
-                    ClearAuthorForm();
+                    clearAuthorForm();
                     MessageBox.Show("Author deleted successfully!");
                 }
                 else
