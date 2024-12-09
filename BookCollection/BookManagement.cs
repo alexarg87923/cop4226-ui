@@ -844,6 +844,7 @@ namespace BookCollection
                 button2.Enabled = true;
                 button11.Enabled = true;
                 button12.Enabled = true;
+                LoadBookComponents();
                 return;
             }
 
